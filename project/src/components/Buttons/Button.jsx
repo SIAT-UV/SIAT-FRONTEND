@@ -1,7 +1,7 @@
-import { button } from "./Button.module.css"
+import { button, buttonAlternate } from "./Button.module.css"
 
-export const Button = ({ children, alternate }) => {
+export const Button = ({ children, alternate, otherClass }) => {
   return (
-    <button type="button" className={button}>{children}</button>
+    <button type="button" className={`${button} ${otherClass ?? ''} ${alternate ? buttonAlternate : ''}`}>{children}</button>
   )
 }

@@ -2,6 +2,7 @@
   --font-primary: 'Nunito', sans-serif;
   --font-secondary: 'Merriweather', serif;
   --color-primary: #654bfe;
+  --color-secondary: #f7f6fe;
 }
 
 @font-face {
@@ -27,6 +28,7 @@
 body {
   margin: 0;
   font-family: var(--font-primary);
+  overflow-x: clip;
 }
 
 h1,
@@ -36,4 +38,8 @@ h4,
 h5,
 h6 {
   font-family: var(--font-secondary);
+}
+
+.map-icon {
+  color: #fff;
 }

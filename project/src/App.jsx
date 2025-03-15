@@ -4,11 +4,9 @@ import { Header } from "./components/Header"
 
 export const App = () => {
   return (
-    <>
-      <BrowserRouter>
-        <Header />
-        <AppRouter />
-      </BrowserRouter>
-    </>
+    <BrowserRouter>
+      <Header />
+      <AppRouter />
+    </BrowserRouter>
   )
 }

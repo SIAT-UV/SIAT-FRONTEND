@@ -1,16 +1,18 @@
-import { Button } from "../Buttons"
+import { header, loginButton, loginItem } from "./Header.module.css"
 import { Logo } from "../Logo"
 import { NavBar } from "../NavBar"
-import { header } from "./Header.module.css"
+import { Button } from "../Buttons"
 
-export const Header = () => {
+export const Header = ({ children }) => {
   return (
     <header className={header}>
       <Logo />
-      <NavBar />
-      <div>
-        <Button>Iniciar Sesión</Button>
-      </div>
+      <NavBar>
+        <li className={loginItem}>
+          <Button alternate otherClass={loginButton}>Iniciar sesión</Button>
+        </li>
+      </NavBar>
+      {children}
     </header>
   )
 }

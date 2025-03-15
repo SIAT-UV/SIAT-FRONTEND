@@ -1,14 +1,23 @@
 .button {
-  font-size: .9rem;
+  display: inline-block;
   font-weight: bold;
   background-color: var(--color-primary);
   color: #fff;
   border: none;
-  border-radius: 10px;
+  border-radius: .5em;
   padding: .5em 1em;
   cursor: pointer;
+  transition: background-color .3s, color .3s
 }
 
 .buttonAlternate {
+  background-color: var(--color-secondary);
   color: var(--color-primary);
+}
+
+@media screen and (min-width: 768px) {
+  .button:hover {
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+  }
 }
