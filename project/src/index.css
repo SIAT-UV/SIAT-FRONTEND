@@ -7,15 +7,36 @@
 
 @font-face {
   font-family: 'Nunito';
-  src: url("../fonts/Nunito-Regular.ttf") format('truetype');
+  src: url("./assets/fonts/Nunito/Nunito-Regular.ttf") format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Nunito';
+  src: url("./assets/fonts/Nunito/Nunito-Bold.ttf") format('truetype');
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Merriweather';
-  src: url("../fonts/Merriweather-Regular.ttf") format('truetype');
+  src: url(./assets/fonts/Merry/Merriweather_48pt-Regular.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Merriweather';
+  src: url(./assets/fonts/Merry/Merriweather_48pt-Bold.ttf) format('truetype');
   font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Merriweather';
+  src: url("./assets/fonts/Merry/Merriweather_48pt-Light.ttf") format('truetype');
+  font-weight: lighter;
   font-style: normal;
 }
 
@@ -38,8 +59,4 @@ h4,
 h5,
 h6 {
   font-family: var(--font-secondary);
-}
-
-.map-icon {
-  color: #fff;
 }
