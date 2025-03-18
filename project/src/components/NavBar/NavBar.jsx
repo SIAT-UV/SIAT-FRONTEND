@@ -1,5 +1,5 @@
 import { NavLink } from "../NavLink"
-import { navBar, labelMenu, hamburger, menu } from "./NavBar.module.css"
+import { navBar, labelMenu, hamburger, menu, menuLink, menuLinkActive } from "./NavBar.module.css"
 import { MenuItem } from "./MenuItem"
 
 export const NavBar = ({ children }) => {
@@ -13,16 +13,16 @@ export const NavBar = ({ children }) => {
       <input type="checkbox" className={hamburger} name="hamburger" id="hamburger" />
       <ul className={menu}>
         <MenuItem>
-          <NavLink to="/mapa">Mapa de Calor</NavLink>
+          <NavLink to="/mapa" className={menuLink} active={menuLinkActive}>Mapa de Calor</NavLink>
         </MenuItem>
         <MenuItem>
-          <NavLink to="/dashboard">Panel de Control</NavLink>
+          <NavLink to="/dashboard" className={menuLink} active={menuLinkActive}>Panel de Control</NavLink>
         </MenuItem>
         <MenuItem>
-          <NavLink to="/reportes">Registrar Accidente</NavLink>
+          <NavLink to="/reportes" className={menuLink} active={menuLinkActive}>Registrar Accidente</NavLink>
         </MenuItem>
         <MenuItem>
-          <NavLink to="/analiticas">Información Vial</NavLink>
+          <NavLink to="/analiticas" className={menuLink} active={menuLinkActive}>Información Vial</NavLink>
         </MenuItem>
         {children}
       </ul>
