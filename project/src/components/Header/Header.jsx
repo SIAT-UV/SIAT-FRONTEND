@@ -1,4 +1,4 @@
-import { header, loginButton, loginItem } from "./Header.module.css"
+import { header, buttonsItem, loginButton, registerButton } from "./Header.module.css"
 import { Logo } from "../Logo"
 import { NavBar } from "../NavBar"
 import { Button } from "../Buttons"
@@ -8,8 +8,9 @@ export const Header = ({ children }) => {
     <header className={header}>
       <Logo />
       <NavBar>
-        <li className={loginItem}>
-          <Button alternate otherClass={loginButton}>Iniciar sesión</Button>
+        <li className={buttonsItem}>
+          <Button otherClass={loginButton}>Iniciar sesión</Button>
+          <Button alternate otherClass={registerButton}>Registrarse</Button>
         </li>
       </NavBar>
       {children}

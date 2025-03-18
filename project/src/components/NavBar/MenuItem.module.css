@@ -1,7 +1,10 @@
 .menuItem {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
+  font-family: var(--font-secondary);
+  font-size: 1.1rem;
+}
+
+@media screen and (min-width: 960px) {
+  .menuItem:first-child {
+    margin-left: auto;
+  }
 }
