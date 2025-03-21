@@ -8,6 +8,17 @@
   box-shadow: 0px 0px 3px 0px #bbb;
 }
 
+.buttonsItem {
+  display: flex;
+  flex-direction: column;
+  gap: .8em;
+}
+
+.buttonsItem .loginButton {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+}
+
 .loginButton,
 .registerButton {
   width: 100%;
@@ -21,8 +32,7 @@
   }
 
   .buttonsItem {
-    display: flex;
-    flex-direction: column;
+    gap: .7em;
     margin-left: auto;
   }
 
