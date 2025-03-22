@@ -10,7 +10,7 @@ export const Header = ({ children }) => {
       <NavBar>
         <li className={buttonsItem}>
           <Button otherClass={loginButton}>Iniciar sesión</Button>
-          <Button alternate otherClass={registerButton}>Registrarse</Button>
+          <Button otherClass={registerButton}>Registrarse</Button>
         </li>
       </NavBar>
       {children}

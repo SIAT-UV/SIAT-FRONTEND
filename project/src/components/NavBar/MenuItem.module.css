@@ -1,10 +1,14 @@
 .menuItem {
-  font-family: var(--font-secondary);
-  font-size: 1.1rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5em;
+  font-size: 1.2rem;
 }
 
 @media screen and (min-width: 960px) {
-  .menuItem:first-child {
-    margin-left: auto;
+  .menuItem {
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 1.1rem;
   }
 }

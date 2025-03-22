@@ -3,10 +3,14 @@ import { menuLink } from "./NavLink.module.css"
 
 export const NavLink = ({ children, to, handleClick, className = menuLink, active, ...props }) => {
   return (
-    <NavLinkRouter to={to} onClick={handleClick} className={({ isActive }) => {
-      const hasActive = active ?? ""
-      return isActive && hasActive ? `${className} ${hasActive}` : className
-    }} {...props}>
+    <NavLinkRouter
+      to={to}
+      onClick={handleClick}
+      className={({ isActive }) => {
+        return isActive ? `${className} ${active}` : className
+      }}
+      {...props}
+    >
       {children}
     </NavLinkRouter>
   )
