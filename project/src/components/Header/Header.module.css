@@ -11,7 +11,7 @@
 .buttonsItem {
   display: flex;
   flex-direction: column;
-  gap: .8em;
+  gap: 0.8em;
 }
 
 .buttonsItem .loginButton {
@@ -32,7 +32,7 @@
   }
 
   .buttonsItem {
-    gap: .7em;
+    gap: 0.7em;
     margin-left: auto;
   }
 
@@ -42,8 +42,4 @@
     background-color: var(--color-primary);
     color: #fff;
   }
-}
-
-h1 {
-  margin: 0;
 }
