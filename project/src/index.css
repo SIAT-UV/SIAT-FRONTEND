@@ -1,41 +1,41 @@
 :root {
-  --font-primary: 'Nunito', sans-serif;
-  --font-secondary: 'Merriweather', serif;
+  --font-primary: "Nunito", sans-serif;
+  --font-secondary: "Merriweather", serif;
   --color-primary: #654bfe;
   --color-secondary: #f7f6fe;
 }
 
 @font-face {
-  font-family: 'Nunito';
-  src: url("./assets/fonts/Nunito/Nunito-Regular.ttf") format('truetype');
+  font-family: "Nunito";
+  src: url("./assets/fonts/Nunito/Nunito-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Nunito';
-  src: url("./assets/fonts/Nunito/Nunito-Bold.ttf") format('truetype');
+  font-family: "Nunito";
+  src: url("./assets/fonts/Nunito/Nunito-Bold.ttf") format("truetype");
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Merriweather';
-  src: url(./assets/fonts/Merry/Merriweather_48pt-Regular.ttf) format('truetype');
+  font-family: "Merriweather";
+  src: url(./assets/fonts/Merry/Merriweather_48pt-Regular.ttf) format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Merriweather';
-  src: url(./assets/fonts/Merry/Merriweather_48pt-Bold.ttf) format('truetype');
+  font-family: "Merriweather";
+  src: url(./assets/fonts/Merry/Merriweather_48pt-Bold.ttf) format("truetype");
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Merriweather';
-  src: url("./assets/fonts/Merry/Merriweather_48pt-Light.ttf") format('truetype');
+  font-family: "Merriweather";
+  src: url("./assets/fonts/Merry/Merriweather_48pt-Light.ttf") format("truetype");
   font-weight: lighter;
   font-style: normal;
 }

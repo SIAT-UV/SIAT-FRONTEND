@@ -1,0 +1,22 @@
+.breadcrum {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.breadcrumItem:not(:first-child)::before {
+  content: ">";
+  margin: 0 0.6em;
+  font-weight: bold;
+}
+
+.breadcrumLink {
+  color: rgb(0 0 0 / 0.6);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.breadcrumLink:hover {
+  color: #000;
+}
