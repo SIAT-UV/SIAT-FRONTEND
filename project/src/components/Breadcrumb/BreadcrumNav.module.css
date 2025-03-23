@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   list-style: none;
+  font-size: 0.95rem;
 }
 
 .breadcrumItem:not(:first-child)::before {
@@ -14,9 +15,14 @@
 .breadcrumLink {
   color: rgb(0 0 0 / 0.6);
   text-decoration: none;
-  transition: color 0.3s;
 }
 
-.breadcrumLink:hover {
-  color: #000;
+@media screen and (min-width: 960px) {
+  .breadcrumLink {
+    transition: color 0.3s;
+  }
+
+  .breadcrumLink:hover {
+    color: #000;
+  }
 }

@@ -21,11 +21,6 @@
   color: var(--color-primary);
 }
 
-.loginButton,
-.registerButton {
-  font-size: 1rem;
-}
-
 @media screen and (min-width: 960px) {
   .header {
     padding-top: 0.8rem;

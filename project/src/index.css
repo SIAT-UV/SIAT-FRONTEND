@@ -52,6 +52,10 @@ body {
   overflow-x: clip;
 }
 
+main {
+  padding: 2rem;
+}
+
 h1,
 h2,
 h3,
