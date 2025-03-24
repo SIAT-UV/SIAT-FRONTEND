@@ -1,5 +1,6 @@
 import { Controller } from "react-hook-form"
 import { select } from "./SelectForm.module.css"
+import { ErrorForm } from "../ErrorForm"
 
 export const SelectForm = ({ name, control, label, options, error }) => {
   return (
@@ -19,7 +20,7 @@ export const SelectForm = ({ name, control, label, options, error }) => {
           </select>
         )}
       />
-      {error && <p>{error.message}</p>}
+      <ErrorForm error={error} />
     </div>
   )
 }
