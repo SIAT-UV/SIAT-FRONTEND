@@ -3,6 +3,9 @@
   --font-secondary: "Merriweather", serif;
   --color-primary: #654bfe;
   --color-secondary: #f7f6fe;
+  --font-size-small: 0.8rem;
+  --font-size-medium: 1rem;
+  --font-size-large: 1.1rem;
 }
 
 @font-face {

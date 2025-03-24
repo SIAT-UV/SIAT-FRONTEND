@@ -24,7 +24,7 @@
 .labelMenu {
   display: flex;
   align-items: center;
-  height: auto;
+  cursor: pointer;
 }
 
 .hamburger:checked + .menu {

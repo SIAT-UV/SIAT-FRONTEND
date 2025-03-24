@@ -1,0 +1,16 @@
+.fileButton {
+  padding: 0.5em 1em;
+  font-size: var(--font-size-small);
+  font-weight: bold;
+  border: none;
+  border-radius: 30px;
+  background-color: var(--color-primary);
+  color: #fff;
+  cursor: pointer;
+}
+
+.fileSelected {
+  margin-top: 20px;
+  margin-bottom: 0;
+  font-size: calc(var(--font-size-small) + 0.1rem);
+}

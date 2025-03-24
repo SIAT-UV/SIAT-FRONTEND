@@ -1,0 +1,24 @@
+.select {
+  display: block;
+  width: 80%;
+  max-width: 500px;
+  border: none;
+  background-color: #eee;
+  border-radius: 30px;
+  margin-top: 6px;
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+  padding-left: 0.8em;
+  padding-right: 2em;
+  font-family: inherit;
+  font-size: var(--font-size-normal);
+  appearance: none;
+  background-image: url("../../../../assets/icons/caret-down-fill.svg");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 0.9em;
+}
+
+.select:focus {
+  outline: none;
+}
