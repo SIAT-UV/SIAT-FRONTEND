@@ -2,14 +2,14 @@ import { InputForm } from "../InputForm"
 import { SelectForm } from "../SelectForm"
 import { Button } from "../../../../components/Buttons"
 import { ACCIDENTS_ENUM } from "../../constants/accident"
-import { formGeneral, form, formTitle, formFile } from "./AccidentForm.module.css"
+import { formGeneral, container, form, formTitle, formFile } from "./AccidentForm.module.css"
 import { FileInput } from "../FileForm/FileInput"
 
 export const AccidentForm = ({ control, handleSubmit, errors }) => {
   return (
-    <div className={form}>
+    <div className={container}>
       <h3 className={formTitle}>Información General</h3>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={form}>
         <div className={formGeneral}>
           <InputForm name="accidentDate" control={control} label="Fecha del Accidente" type="date" error={errors.accidentDate} />
           <InputForm name="accidentTime" control={control} label="Hora del Accidente" type="time" step="1" error={errors.accidentTime} />

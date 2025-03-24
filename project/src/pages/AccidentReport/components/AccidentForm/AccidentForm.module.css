@@ -1,6 +1,5 @@
-.form {
+.container {
   margin-top: 30px;
-  margin-left: 30px;
 }
 
 .formTitle {
@@ -17,4 +16,38 @@
 
 .formFile > :last-child {
   margin-top: 30px;
+}
+
+@media screen and (min-width: 960px) {
+  .container {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .form {
+    display: flex;
+    gap: 10vw;
+    margin-top: 30px;
+  }
+
+  .formGeneral {
+    width: 35%;
+  }
+
+  .formFile {
+    width: 65%;
+  }
+}
+
+@media screen and (min-width: 1800px) {
+  .container {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .form {
+    gap: 20vw;
+  }
 }

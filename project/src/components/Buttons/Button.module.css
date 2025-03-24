@@ -19,6 +19,10 @@
 }
 
 @media screen and (min-width: 960px) {
+  .button {
+    font-size: calc(var(--font-size-small) + 0.1rem);
+  }
+
   .button:hover {
     background-color: var(--color-secondary);
     color: var(--color-primary);

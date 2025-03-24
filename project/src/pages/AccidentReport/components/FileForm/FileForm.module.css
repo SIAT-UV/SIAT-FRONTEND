@@ -4,6 +4,7 @@
   padding: 2em 0.5em 2em 1em;
   border-radius: 10px;
   background-color: #eee;
+  box-shadow: 0px 0px 2px 0px var(--color-shadow);
 }
 
 .fileTitle {
@@ -19,4 +20,18 @@
   margin-bottom: 25px;
   color: #666;
   font-size: calc(var(--font-size-small) + 0.1rem);
+}
+
+@media screen and (min-width: 960px) {
+  .fileContainer {
+    width: 100%;
+  }
+
+  .fileTitle {
+    font-size: var(--font-size-large);
+  }
+
+  .fileInfo {
+    font-size: var(--font-size-small);
+  }
 }

@@ -14,3 +14,11 @@
   margin-bottom: 0;
   font-size: calc(var(--font-size-small) + 0.1rem);
 }
+
+@media screen and (min-width: 960px) {
+  .fileSelected {
+    display: inline-block;
+    margin: 0;
+    margin-left: 20px;
+  }
+}
