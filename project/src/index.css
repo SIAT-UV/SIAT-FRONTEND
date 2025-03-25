@@ -3,6 +3,11 @@
   --font-secondary: "Merriweather", serif;
   --color-primary: #654bfe;
   --color-secondary: #f7f6fe;
+  --font-size-small: 0.8rem;
+  --font-size-medium: 1rem;
+  --font-size-large: 1.1rem;
+  --shadow-color: #bbb;
+  --error-color: #e63946;
 }
 
 @font-face {
@@ -50,6 +55,10 @@ body {
   margin: 0;
   font-family: var(--font-primary);
   overflow-x: clip;
+}
+
+main {
+  padding: 2.5rem;
 }
 
 h1,

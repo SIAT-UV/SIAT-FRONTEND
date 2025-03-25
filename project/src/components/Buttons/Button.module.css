@@ -4,10 +4,13 @@
   background-color: var(--color-primary);
   color: #fff;
   border: none;
-  border-radius: .5em;
-  padding: .5em 1em;
+  border-radius: 0.5em;
+  padding: 0.5em 1em;
   cursor: pointer;
-  transition: background-color .3s, color .3s
+  font-size: var(--font-size-large);
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
 .buttonAlternate {
@@ -16,6 +19,10 @@
 }
 
 @media screen and (min-width: 960px) {
+  .button {
+    font-size: var(--font-size-normal);
+  }
+
   .button:hover {
     background-color: var(--color-secondary);
     color: var(--color-primary);

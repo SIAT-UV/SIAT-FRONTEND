@@ -1,0 +1,37 @@
+.fileContainer {
+  width: 95%;
+  margin-top: 6px;
+  padding: 2em 0.5em 2em 1em;
+  border-radius: 10px;
+  background-color: #eee;
+  box-shadow: 0px 0px 2px 0px var(--shadow-color);
+}
+
+.fileTitle {
+  margin-top: 20px;
+  margin-bottom: 5px;
+  font-family: var(--font-primary);
+  font-size: calc(var(--font-size-large) + 0.1rem);
+  font-weight: normal;
+}
+
+.fileInfo {
+  margin-top: 0;
+  margin-bottom: 25px;
+  color: #666;
+  font-size: calc(var(--font-size-small) + 0.1rem);
+}
+
+@media screen and (min-width: 960px) {
+  .fileContainer {
+    width: 100%;
+  }
+
+  .fileTitle {
+    font-size: var(--font-size-large);
+  }
+
+  .fileInfo {
+    font-size: var(--font-size-small);
+  }
+}
