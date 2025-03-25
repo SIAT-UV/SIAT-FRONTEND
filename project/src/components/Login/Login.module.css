@@ -1,0 +1,15 @@
+.titulo {
+    text-align: left;
+    margin-bottom: 0.3em;
+    color:black;
+    font-size: 1.5em;
+    font-family: var(--font-secondary);
+}
+
+.subtitulo {
+    text-align: left;
+    margin-bottom: 1em;
+    color: gray;
+    font-size: 1em;
+    font-family: var(--font-primary);
+}   
