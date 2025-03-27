@@ -1,6 +1,6 @@
 import axios from "axios"
-import { BACK_URL } from "../constants/backUrl"
-import { REGISTER_FIELDS } from "../constants/DBFields"
+import { BACK_URL } from "../constants"
+import { REGISTER_FIELDS } from "../constants"
 import { formatData } from "../utilities/formatData"
 
 export const register = async (data) => {
