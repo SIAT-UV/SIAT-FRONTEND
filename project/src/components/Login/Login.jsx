@@ -8,6 +8,7 @@ import { FormLayout } from "../FormLayout/FormLayout"
 import { titulo, subtitulo } from "./Login.module.css"
 import { useFetchData } from "../../hooks"
 import { login } from "../../services"
+import { Loader } from "../Loader"
 
 const schema = z.object({
   identificacion: z.string().min(1, { message: "La cédula es requerida" }),
@@ -15,7 +16,7 @@ const schema = z.object({
 })
 
 export const Login = () => {
-  const { data, error, fetch } = useFetchData(login)
+  const { loading, data, error, fetch } = useFetchData(login)
 
   const {
     register,
@@ -29,6 +30,7 @@ export const Login = () => {
     fetch(user)
   }
 
+  if (loading) return <Loader />
   return (
     <FormLayout>
       <h1 className={titulo}>Iniciar Sesión</h1>
@@ -41,4 +43,3 @@ export const Login = () => {
     </FormLayout>
   )
 }
-

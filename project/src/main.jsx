@@ -7,6 +7,6 @@ import { Login } from "./components/Login"
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <Formulario />
+    <Login />
   </StrictMode>,
 )
