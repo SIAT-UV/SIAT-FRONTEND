@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom"
-import { PATHS } from "../../constants/breadcrum.js"
+import { PATHS } from "../../constants"
 import { breadcrum, breadcrumItem, breadcrumLink } from "./BreadcrumNav.module.css"
 
 export const BreadcrumNav = ({ paths }) => {
-  // console.log("Render")
   if (paths.length === 0) return null
 
   return (
