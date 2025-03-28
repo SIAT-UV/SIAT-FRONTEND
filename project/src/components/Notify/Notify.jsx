@@ -1,12 +1,12 @@
 import { NotifyCard } from "./NotifyCard"
 
 export const Notify = ({ error, variant }) => {
-  const { name, message } = error
+  console.log(error)
 
   return (
     <NotifyCard variant={variant}>
-      <span>{name}</span>
-      <span>{message}</span>
+      <span>{error?.response.statusText}</span>
+      <span>{error?.message}</span>
     </NotifyCard>
   )
 }

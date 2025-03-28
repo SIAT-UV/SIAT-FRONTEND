@@ -28,7 +28,7 @@ export const Login = () => {
   })
 
   const onSubmit = (user) => {
-    fetch({ name: "Juan" })
+    fetch({ name: "user" })
   }
 
   if (loading) return <Loader />
