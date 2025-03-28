@@ -9,6 +9,7 @@ import { titulo, subtitulo } from "./Login.module.css"
 import { useFetchData } from "../../hooks"
 import { login } from "../../services"
 import { Loader } from "../Loader"
+import { Notify } from "../Notify"
 
 const schema = z.object({
   identificacion: z.string().min(1, { message: "La cédula es requerida" }),
@@ -27,10 +28,13 @@ export const Login = () => {
   })
 
   const onSubmit = (user) => {
-    fetch(user)
+    fetch({ name: "Juan" })
   }
 
   if (loading) return <Loader />
+
+  if (error) return <Notify error={error} variant="error" />
+
   return (
     <FormLayout>
       <h1 className={titulo}>Iniciar Sesión</h1>
