@@ -1,5 +1,7 @@
 import axios from "axios"
 import { BACK_URL } from "../constants"
+import { snackbarManager } from "./snackbarManager"
+import { getValidateErrors } from "../utilities"
 
 class AxiosInterceptors {
   #axios
@@ -24,8 +26,21 @@ class AxiosInterceptors {
     )
   }
 
+  setUpResponse() {
+    this.#axios.interceptors.response.use(
+      (response) => {
+        return response
+      },
+      (error) => {
+        snackbarManager.error(getValidateErrors(error?.code))
+        return Promise.reject(error)
+      },
+    )
+  }
+
   initAxios() {
     this.setUpRequest()
+    this.setUpResponse()
   }
 
   getAxios() {

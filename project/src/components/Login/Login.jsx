@@ -1,4 +1,3 @@
-import React from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
@@ -9,7 +8,6 @@ import { titulo, subtitulo } from "./Login.module.css"
 import { useFetchData } from "../../hooks"
 import { login } from "../../services"
 import { Loader } from "../Loader"
-import { Notify } from "../Notify"
 
 const schema = z.object({
   identificacion: z.string().min(1, { message: "La cédula es requerida" }),
@@ -17,7 +15,7 @@ const schema = z.object({
 })
 
 export const Login = () => {
-  const { loading, data, error, fetch } = useFetchData(login)
+  const { loading, data, fetch } = useFetchData(login)
 
   const {
     register,
@@ -28,12 +26,10 @@ export const Login = () => {
   })
 
   const onSubmit = (user) => {
-    fetch({ name: "user" })
+    fetch(user)
   }
 
   if (loading) return <Loader />
-
-  if (error) return <Notify error={error} variant="error" />
 
   return (
     <FormLayout>
