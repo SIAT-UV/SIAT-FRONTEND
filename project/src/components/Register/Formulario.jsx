@@ -1,7 +1,7 @@
 import React from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { z } from "zod"
+import { object, z } from "zod"
 import { Button } from "../Buttons"
 import { CamposRegister } from "../CamposRegister/CamposRegister"
 import { FormLayout } from "../FormLayout/FormLayout"
@@ -35,7 +35,7 @@ export const Formulario = () => {
   })
 
   const onSubmit = (user) => {
-    const newUser = user
+    const newUser = { ...user }
     delete newUser.confirmPassword
     fetch(newUser)
   }

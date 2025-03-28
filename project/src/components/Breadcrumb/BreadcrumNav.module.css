@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
   list-style: none;
-  font-size: calc(var(--font-size-normal) - 0.1rem);
+  font-size: calc(var(--font-size-medium) - 0.1rem);
 }
 
 .breadcrumItem:not(:first-child)::before {

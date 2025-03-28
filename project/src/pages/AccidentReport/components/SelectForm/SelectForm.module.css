@@ -11,7 +11,7 @@
   padding-left: 0.8em;
   padding-right: 2em;
   font-family: inherit;
-  font-size: var(--font-size-normal);
+  font-size: var(--font-size-medium);
   appearance: none;
   background-image: url("../../../../assets/icons/caret-down-fill.svg");
   background-repeat: no-repeat;
