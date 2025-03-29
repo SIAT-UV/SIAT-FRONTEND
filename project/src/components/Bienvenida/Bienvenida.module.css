@@ -1,0 +1,38 @@
+.bienvenida {
+    text-align: center;
+  }
+  
+  .bienvenida__title {
+    font-weight: normal;
+    margin-top: -2.5em;
+    font-size: 1rem;
+  }
+  
+  .bienvenida__titleBold {
+    font-size: 3rem;
+    font-style: italic;
+    font-weight: bold;
+    margin-top: 0.75em;
+  }
+  
+  .bienvenida__info {
+    width: 70%;
+    font-size: 1.2rem;
+    position: relative;
+    margin: 0 auto;
+    font-weight: 300;
+    margin-top: 2.5em;
+    margin-bottom: 5em;
+    text-align: justify;
+    line-height: 1.5
+  }
+  
+  .bienvenida__info::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    left: calc(50% - 15px);
+    width: 35px;
+    height: 3px;
+    background-color: var(--primary-color);
+  }
