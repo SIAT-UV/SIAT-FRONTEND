@@ -1,10 +1,10 @@
-import { createPortal } from 'react-dom'
-import { useModalContext } from '../../context/ModalContext'
-import { overlay } from './Modal.module.css'
+import { createPortal } from "react-dom"
+import { useModalContext } from "../../hooks"
+import { overlay } from "./Modal.module.css"
 
 export function Modal({ modalId, children }) {
   const { modal, closeModal } = useModalContext()
-  const modalRoot = document.getElementById('modal')
+  const modalRoot = document.getElementById("modal")
 
   const handleContentClick = (event) => {
     event.stopPropagation()
@@ -16,6 +16,7 @@ export function Modal({ modalId, children }) {
     <div className={overlay} onClick={closeModal}>
       <div onClick={handleContentClick}>{children}</div>
     </div>,
-    modalRoot
+    modalRoot,
   )
 }
+

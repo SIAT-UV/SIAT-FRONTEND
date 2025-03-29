@@ -1,11 +1,10 @@
-import { container, box } from './FormLayout.module.css';
+import { box } from "./FormLayout.module.css"
 
-export const FormLayout = ({ children}) => {
-    return (
-        <div className={container}>
-            <div className={box}>
-                {children}
-            </div>
-        </div>
-    )
+export const FormLayout = ({ children }) => {
+  return (
+    <div>
+      <div className={box}>{children}</div>
+    </div>
+  )
 }
+

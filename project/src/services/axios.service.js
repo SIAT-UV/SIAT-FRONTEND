@@ -13,7 +13,7 @@ class AxiosInterceptors {
   setUpRequest() {
     this.#axios.interceptors.request.use(
       (config) => {
-        const token = localStorage.getItem("token")
+        const token = localStorage.getItem("user")
 
         if (token) config.headers.set(`Authorization Bearer ${token}`)
         config.headers.set("Content-Type", "application/json")
@@ -32,6 +32,7 @@ class AxiosInterceptors {
         return response
       },
       (error) => {
+        console.log(error)
         snackbarManager.error(getValidateErrors(error?.code))
         return Promise.reject(error)
       },

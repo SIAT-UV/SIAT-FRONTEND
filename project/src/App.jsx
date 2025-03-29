@@ -10,7 +10,7 @@ import { Login } from "./components/Login/"
 export const App = () => {
   return (
     <AppProviders>
-      <Modal modalId="registro">
+      <Modal modalId="register">
         <Formulario />
       </Modal>
       <Modal modalId="login">

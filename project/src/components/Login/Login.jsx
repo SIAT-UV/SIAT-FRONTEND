@@ -1,28 +1,25 @@
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { z } from "zod"
 import { Button } from "../Buttons"
 import { CamposRegister } from "../CamposRegister/CamposRegister"
 import { FormLayout } from "../FormLayout/FormLayout"
 import { titulo, subtitulo } from "./Login.module.css"
-import { useFetchData } from "../../hooks"
+import { useAuthContext, useFetchData } from "../../hooks"
 import { login } from "../../services"
 import { Loader } from "../Loader"
-
-const schema = z.object({
-  identificacion: z.string().min(1, { message: "La cédula es requerida" }),
-  contraseña: z.string().min(3, { message: "La contraseña es incorrecta" }),
-})
+import { userAuthContext } from "../../context"
+import { schemaLogin } from "../../schemas"
 
 export const Login = () => {
-  const { loading, data, fetch } = useFetchData(login)
+  const { login: loginUser } = useAuthContext(userAuthContext)
+  const { loading, fetch } = useFetchData(login, { onSuccess: (response) => loginUser(response) })
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(schemaLogin),
   })
 
   const onSubmit = (user) => {
