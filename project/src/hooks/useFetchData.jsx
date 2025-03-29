@@ -4,6 +4,7 @@ import { useState } from "react"
 export const useFetchData = (apiCall, options = {}) => {
   const [loading, setLoading] = useState(false)
   const [data, setData] = useState(null)
+  const [error, setError] = useState(null)
 
   const fetch = useCallback(
     (params) => {
@@ -13,7 +14,11 @@ export const useFetchData = (apiCall, options = {}) => {
       call
         .then((response) => {
           setData(response.data)
+          setError(null)
           options?.onSuccess?.(response.data)
+        })
+        .catch((error) => {
+          setError(error)
         })
         .finally(() => {
           setLoading(false)
@@ -27,5 +32,5 @@ export const useFetchData = (apiCall, options = {}) => {
     if (options?.autoFetch) return fetch()
   }, [fetch, options?.autoFetch])
 
-  return { loading, data, fetch }
+  return { loading, data, error, fetch }
 }
