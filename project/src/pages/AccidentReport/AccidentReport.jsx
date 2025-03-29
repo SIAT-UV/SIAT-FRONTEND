@@ -25,7 +25,11 @@ export const AccidentReport = () => {
   })
 
   const onSubmit = handleSubmit((data) => {
-    console.log(data)
+    const formData = new FormData()
+
+    Object.keys(data).forEach((key) => {
+      formData.append(key, data[key])
+    })
   })
 
   return (

@@ -1,5 +1,6 @@
 import { createContext, useContext, useState } from "react"
 import { initialState } from "../constants"
+import { tokenService } from "../services"
 
 export const userAuthContext = createContext()
 
@@ -9,7 +10,10 @@ export function UserAuthContextProvider({ children }) {
     return user ? JSON.parse(user) : initialState
   })
 
-  const login = (auth) => setAuth(auth)
+  const login = (auth) => {
+    setAuth(auth)
+    tokenService.setToken(auth.access)
+  }
 
   return <userAuthContext.Provider value={{ auth, login }}>{children}</userAuthContext.Provider>
 }

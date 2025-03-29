@@ -2,6 +2,7 @@ import axios from "axios"
 import { BACK_URL } from "../constants"
 import { snackbarManager } from "./snackbarManager"
 import { getValidateErrors } from "../utilities"
+import { tokenService } from "./token.service"
 
 class AxiosInterceptors {
   #axios
@@ -13,10 +14,9 @@ class AxiosInterceptors {
   setUpRequest() {
     this.#axios.interceptors.request.use(
       (config) => {
-        const token = localStorage.getItem("user")
+        const token = tokenService.getToken()
 
-        if (token) config.headers.set(`Authorization Bearer ${token}`)
-        config.headers.set("Content-Type", "application/json")
+        // if (token) config.headers.set(`Authorization Bearer ${token}`)
 
         return config
       },
