@@ -1,0 +1,39 @@
+.signContainer {
+  width: 90%;
+}
+
+.signTitle {
+  text-align: center;
+}
+
+.sign {
+  display: block;
+  width: 100%;
+  min-height: 350px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (min-width: 960px) {
+  .signContainer {
+    width: 100%;
+  }
+
+  .signContainer:last-child {
+    grid-column: 2 / 3;
+  }
+
+  .sign {
+    max-height: 400px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .signContainer:last-child {
+    grid-column: initial;
+  }
+
+  .sign {
+    max-height: 480px;
+  }
+}

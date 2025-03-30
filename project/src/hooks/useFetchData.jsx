@@ -15,6 +15,7 @@ export const useFetchData = (apiCall, options = {}) => {
         .then((response) => {
           setData(response.data)
           setError(null)
+          options?.onSuccess?.(response.data)
         })
         .catch((error) => {
           setError(error)
@@ -28,8 +29,8 @@ export const useFetchData = (apiCall, options = {}) => {
   )
 
   useEffect(() => {
-    if (options?.autoFetch) fetch()
-  }, [fetch])
+    if (options?.autoFetch) return fetch()
+  }, [fetch, options?.autoFetch])
 
   return { loading, data, error, fetch }
 }

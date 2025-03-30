@@ -1,0 +1,14 @@
+.signsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-items: center;
+  row-gap: 30px;
+  margin-top: 30px;
+}
+
+@media screen and (min-width: 960px) {
+  .signsContainer {
+    column-gap: 100px;
+    row-gap: 0;
+  }
+}

@@ -3,11 +3,13 @@ import { Logo } from "../Logo"
 import { NavBar } from "../NavBar"
 import { Button } from "../Buttons"
 import { useEffect, useState } from "react"
-import { useModalContext } from "../../context/ModalContext"
+import { useModalContext } from "../../hooks"
 
-export const Header = ({ children }) => { 
-  const {openModal} = useModalContext()
+export const Header = ({ children }) => {
+  const { openModal } = useModalContext()
   const [isMobile, setIsMobile] = useState(window.innerWidth < 968)
+
+  const handleClickModal = (modalId) => () => openModal(modalId)
 
   useEffect(() => {
     const handleResize = () => {
@@ -26,10 +28,10 @@ export const Header = ({ children }) => {
       <Logo />
       <NavBar>
         <li className={buttonsItem}>
-          <Button handleClick={()=> openModal("login")} otherClass={loginButton} alternate={isMobile}>
+          <Button handleClick={handleClickModal("login")} otherClass={loginButton} alternate={isMobile}>
             Iniciar sesión
           </Button>
-          <Button handleClick={()=> openModal("registro")} otherClass={registerButton} alternate={isMobile}>
+          <Button handleClick={handleClickModal("register")} otherClass={registerButton} alternate={isMobile}>
             Registrarse
           </Button>
         </li>
