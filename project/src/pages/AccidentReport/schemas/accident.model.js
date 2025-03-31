@@ -13,6 +13,7 @@ export const schema = z.object({
   accidentSeverity: z.enum(ACCIDENTS_ENUM.accidentSeverity, { errorMap: () => ({ message: "Seleccione una opción válida" }) }),
   vehicleType: z.enum(ACCIDENTS_ENUM.vehicleType, { errorMap: () => ({ message: "Seleccione una opción válida" }) }),
   accidentArea: z.enum(ACCIDENTS_ENUM.accidentArea, { errorMap: () => ({ message: "Seleccione una opción válida" }) }),
+  accidentNeighbor: z.string().min(1, "Se requiere el barrio del accidente"),
   accidentAddress: z.string().min(3, "Se requiere la dirección del accidente"),
   accidentImage: z
     .instanceof(File)

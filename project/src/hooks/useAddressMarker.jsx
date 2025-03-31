@@ -3,12 +3,7 @@ import { useEffect } from "react"
 import { useRef } from "react"
 import { useState } from "react"
 
-const options = {
-  componentRestrictions: { country: "co" },
-}
-
-export const useAddressMarker = ({ onPlaceSelect }) => {
-  const [address, setAddress] = useState("")
+export const useAddressMarker = ({ onPlaceSelect, setValue }) => {
   const inputRef = useRef(null)
   const map = useMap()
   const apiIsLoaded = useApiIsLoaded()
@@ -21,7 +16,13 @@ export const useAddressMarker = ({ onPlaceSelect }) => {
 
     autocomplete.addListener("place_changed", () => {
       const place = autocomplete.getPlace()
-      if (place.geometry?.location) {
+      console.log(onPlaceSelect)
+
+      // if (place?.formatted_address && setValue) {
+      //   setValue("accidentAddress", place.formatted_address, { shouldValidate: true })
+      // }
+
+      if (place?.geometry?.location) {
         const selectedLocation = { lat: place.geometry.location.lat(), lng: place.geometry.location.lng() }
         onPlaceSelect(selectedLocation)
         map.panTo(selectedLocation)
@@ -29,7 +30,7 @@ export const useAddressMarker = ({ onPlaceSelect }) => {
     })
 
     return () => autocomplete.unbindAll()
-  }, [apiIsLoaded, onPlaceSelect, places, map])
+  }, [apiIsLoaded, onPlaceSelect, places, map, setValue])
 
-  return { address, setAddress, inputRef, apiIsLoaded }
+  return { inputRef, apiIsLoaded }
 }
