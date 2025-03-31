@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
+import { FormProvider, useForm } from "react-hook-form"
 import { schema } from "./schemas/accident.model"
 import { AccidentForm } from "./components/AccidentForm"
 import { useFetchData } from "../../hooks"
@@ -9,6 +9,7 @@ export const AccidentReport = () => {
   const { loading, fetch } = useFetchData(report)
   const {
     control,
+    register,
     handleSubmit,
     reset,
     formState: { errors },
@@ -23,7 +24,7 @@ export const AccidentReport = () => {
       accidentSeverity: "",
       vehicleType: "",
       accidentArea: "",
-      // accidentAddress: "",
+      accidentAddress: "",
       accidentImage: undefined,
     },
   })
@@ -44,7 +45,7 @@ export const AccidentReport = () => {
   return (
     <>
       <h2>Registrar Accidente</h2>
-      <AccidentForm control={control} handleSubmit={onSubmit} errors={errors} />
+      <AccidentForm control={control} register={register} handleSubmit={onSubmit} errors={errors} />
     </>
   )
 }

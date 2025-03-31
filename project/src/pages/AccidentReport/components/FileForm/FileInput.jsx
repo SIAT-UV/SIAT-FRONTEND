@@ -5,7 +5,7 @@ import { ErrorForm } from "../ErrorForm"
 
 export const FileInput = ({ name, control, accept, error }) => {
   return (
-    <FileForm>
+    <FileForm label="Evidencia">
       <label htmlFor={name} className={fileButton}>
         Seleccionar archivo
       </label>
