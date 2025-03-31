@@ -15,7 +15,7 @@ export const useAddressMarker = ({ onPlaceSelect }) => {
   const places = useMapsLibrary("places")
 
   useEffect(() => {
-    if (!apiIsLoaded || !inputRef.current) return
+    if (!apiIsLoaded || !inputRef.current || !places) return
 
     const autocomplete = new places.Autocomplete(inputRef.current, options)
 
