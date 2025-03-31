@@ -1,4 +1,5 @@
 import { UbicationMap } from "../../../../components/Ubication"
+import { ErrorForm } from "../ErrorForm"
 import { ubicationContainer } from "./UbicationForm.module.css"
 
 const mapContainer = {
@@ -7,13 +8,14 @@ const mapContainer = {
   marginTop: "30px",
 }
 
-export const UbicationForm = ({ children }) => {
+export const UbicationForm = ({ error, children }) => {
   return (
     <div className={ubicationContainer}>
-      <label htmlFor="accidentLocation">Ubicación del accidente</label>
+      <label htmlFor="accidentAddress">Ubicación del accidente</label>
       <UbicationMap containerStyles={mapContainer} zoom={14}>
         {children}
       </UbicationMap>
+      <ErrorForm error={error} />
     </div>
   )
 }

@@ -6,7 +6,7 @@ import { formGeneral, container, form, formTitle, formFile, input, select, ubica
 import { FileInput } from "../FileForm/FileInput"
 import { UbicationForm } from "../UbicationForm"
 
-export const AccidentForm = ({ control, register, handleSubmit, errors }) => {
+export const AccidentForm = ({ control, handleSubmit, errors }) => {
   return (
     <div className={container}>
       <h3 className={formTitle}>Información General</h3>
@@ -70,15 +70,18 @@ export const AccidentForm = ({ control, register, handleSubmit, errors }) => {
             options={ACCIDENTS_ENUM.accidentArea}
             error={errors.accidentArea}
           />
+          <InputForm
+            name="accidentNeighbor"
+            control={control}
+            label="Barrio del Accidente"
+            placeholder="Ingrese el barrio del accidente"
+            className={input}
+            error={errors.accidentNeighbor}
+          />
         </div>
         <div className={formFile}>
-          <UbicationForm>
-            <input
-              {...register("accidentAddress")}
-              type="text"
-              placeholder="Ingrese la ubicación del accidente"
-              className={`${input} ${ubicationInput}`}
-            />
+          <UbicationForm error={errors.accidentAddress}>
+            <input type="text" placeholder="Ingrese la ubicación del accidente" className={`${input} ${ubicationInput}`} />
           </UbicationForm>
           <FileInput name="accidentImage" control={control} accept="image/jpeg, image/png" error={errors.accidentImage} />
           <Button type="submit">Registrar accidente</Button>
