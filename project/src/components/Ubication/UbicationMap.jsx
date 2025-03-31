@@ -1,13 +1,8 @@
 import { AdvancedMarker, APIProvider, Map } from "@vis.gl/react-google-maps"
-import { GOOGLE_MAP_API_KEY, MAP_ID } from "../../constants"
+import { DEFAULT_CENTER, GOOGLE_MAPS_API_KEY, MAP_ID } from "../../constants"
 import { UbicationInput } from "./UbicationInput"
 import { useState } from "react"
 import { useCallback } from "react"
-
-const defaultCenter = {
-  lat: 4.089954508094611,
-  lng: -76.19161172020155,
-}
 
 const librearies = ["places"]
 
@@ -27,11 +22,11 @@ export const UbicationMap = ({ containerStyles, zoom, children }) => {
   }, [])
 
   return (
-    <APIProvider apiKey={GOOGLE_MAP_API_KEY} libraries={librearies}>
+    <APIProvider apiKey={GOOGLE_MAPS_API_KEY} libraries={librearies}>
       <UbicationInput onPlaceSelect={handlePlaceSelect} markerPosition={markerPosition}>
         {children}
       </UbicationInput>
-      <Map mapId={MAP_ID} defaultCenter={defaultCenter} style={containerStyles} defaultZoom={zoom} onClick={handleClick}>
+      <Map mapId={MAP_ID} defaultCenter={DEFAULT_CENTER} style={containerStyles} defaultZoom={zoom} onClick={handleClick}>
         <AdvancedMarker position={markerPosition} clickable onDragEnd={handleMarkerDragEnd} />
       </Map>
     </APIProvider>
