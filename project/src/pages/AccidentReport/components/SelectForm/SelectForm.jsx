@@ -1,8 +1,7 @@
 import { Controller } from "react-hook-form"
-import { select } from "./SelectForm.module.css"
 import { ErrorForm } from "../ErrorForm"
 
-export const SelectForm = ({ name, control, label, options, error }) => {
+export const SelectForm = ({ name, control, label, className, options, error }) => {
   return (
     <div>
       <label htmlFor={name}>{label}</label>
@@ -10,7 +9,7 @@ export const SelectForm = ({ name, control, label, options, error }) => {
         name={name}
         control={control}
         render={({ field }) => (
-          <select id={name} className={select} {...field}>
+          <select id={name} className={className} {...field}>
             <option value="">Seleccione una opción</option>
             {options.map((option, index) => (
               <option key={index} value={option.value}>

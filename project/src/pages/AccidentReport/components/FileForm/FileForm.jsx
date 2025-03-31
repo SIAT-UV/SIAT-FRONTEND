@@ -1,10 +1,10 @@
 import { PrimaryIcon } from "../../../../components/Icon"
 import { fileContainer, fileTitle, fileInfo } from "./FileForm.module.css"
 
-export const FileForm = ({ children }) => {
+export const FileForm = ({ children, label }) => {
   return (
     <div>
-      <span>Evidencias</span>
+      <span>{label}</span>
       <div className={fileContainer}>
         <PrimaryIcon>
           <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" className="bi bi-camera-fill" viewBox="0 0 16 16">
