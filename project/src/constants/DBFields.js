@@ -11,6 +11,6 @@ export const ACCIDENT_FIELDS = [
   "area",
   "barrio_hecho",
   "direccion_hecho",
-  "coordenada_geografica",
   "imagen",
+  "coordenada_geografica",
 ]

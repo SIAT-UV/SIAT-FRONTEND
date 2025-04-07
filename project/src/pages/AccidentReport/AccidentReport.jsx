@@ -6,6 +6,7 @@ import { useFetchData } from "../../hooks"
 import { report } from "../../services"
 import { formatData } from "../../utilities"
 import { ACCIDENT_FIELDS } from "../../constants"
+import { useEffect } from "react"
 
 export const AccidentReport = () => {
   const { loading, fetch } = useFetchData(report)
@@ -30,13 +31,13 @@ export const AccidentReport = () => {
       accidentNeighbor: "",
       accidentAddress: "",
       accidentImage: undefined,
+      accidentGeo: "",
     },
   })
 
   const onSubmit = handleSubmit((data) => {
     const formatedData = formatData(data, ACCIDENT_FIELDS)
 
-    console.log(formatedData)
     const formData = new FormData()
 
     Object.keys(data).forEach((key) => {

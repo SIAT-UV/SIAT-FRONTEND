@@ -41,8 +41,10 @@ export const useAddressMarker = (onPlaceSelect, setValue, markerPosition) => {
     geocoder.geocode({ location: markerPosition }, (results, status) => {
       if (status !== "OK" || !results[0]) return
 
+      const { lat, lng } = markerPosition
+
       setValue("accidentAddress", results[0].formatted_address, { shouldValidate: true })
-      inputRef.current.setAttribute("data-location", JSON.stringify(markerPosition))
+      setValue("accidentGeo", lat + ", " + lng)
     })
   }, [markerPosition, apiIsLoaded, inputRef, setValue])
 

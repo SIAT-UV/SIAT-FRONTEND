@@ -20,4 +20,5 @@ export const schema = z.object({
     .refine((file) => file.size > 0, { message: "El archivo no puede estar vació" })
     .refine((file) => ["image/jpeg", "image/png"].includes(file.type), { message: "El archivo debe ser una imagen en formato jpeg o png" })
     .optional(),
+  accidentGeo: z.string(),
 })
