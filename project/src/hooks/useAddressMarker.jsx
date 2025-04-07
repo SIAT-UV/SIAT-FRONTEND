@@ -1,9 +1,12 @@
 import { useApiIsLoaded, useMap, useMapsLibrary } from "@vis.gl/react-google-maps"
 import { useEffect } from "react"
 import { useRef } from "react"
-import { useState } from "react"
 
-export const useAddressMarker = ({ onPlaceSelect, setValue }) => {
+const options = {
+  componentRestrictions: { country: "co" },
+}
+
+export const useAddressMarker = (onPlaceSelect, setValue, markerPosition) => {
   const inputRef = useRef(null)
   const map = useMap()
   const apiIsLoaded = useApiIsLoaded()
@@ -16,11 +19,10 @@ export const useAddressMarker = ({ onPlaceSelect, setValue }) => {
 
     autocomplete.addListener("place_changed", () => {
       const place = autocomplete.getPlace()
-      console.log(onPlaceSelect)
 
-      // if (place?.formatted_address && setValue) {
-      //   setValue("accidentAddress", place.formatted_address, { shouldValidate: true })
-      // }
+      if (place?.formatted_address) {
+        setValue("accidentAddress", place.formatted_address, { shouldValidate: true })
+      }
 
       if (place?.geometry?.location) {
         const selectedLocation = { lat: place.geometry.location.lat(), lng: place.geometry.location.lng() }
@@ -32,5 +34,17 @@ export const useAddressMarker = ({ onPlaceSelect, setValue }) => {
     return () => autocomplete.unbindAll()
   }, [apiIsLoaded, onPlaceSelect, places, map, setValue])
 
-  return { inputRef, apiIsLoaded }
+  useEffect(() => {
+    if (!markerPosition || !apiIsLoaded || !inputRef.current) return
+
+    const geocoder = new window.google.maps.Geocoder()
+    geocoder.geocode({ location: markerPosition }, (results, status) => {
+      if (status !== "OK" || !results[0]) return
+
+      setValue("accidentAddress", results[0].formatted_address, { shouldValidate: true })
+      inputRef.current.setAttribute("data-location", JSON.stringify(markerPosition))
+    })
+  }, [markerPosition, apiIsLoaded, inputRef, setValue])
+
+  return { inputRef }
 }

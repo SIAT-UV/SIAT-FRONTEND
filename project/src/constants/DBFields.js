@@ -9,8 +9,8 @@ export const ACCIDENT_FIELDS = [
   "gravedad_del_accidente",
   "clase_de_vehiculo",
   "area",
-  "direccion_hecho",
   "barrio_hecho",
+  "direccion_hecho",
   "coordenada_geografica",
   "imagen",
 ]
