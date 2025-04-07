@@ -13,6 +13,12 @@ export const useAddressMarker = (onPlaceSelect, setValue, markerPosition) => {
   const places = useMapsLibrary("places")
 
   useEffect(() => {
+    if (!apiIsLoaded || !map || !markerPosition) return
+
+    map.panTo(markerPosition)
+  }, [map, markerPosition, apiIsLoaded])
+
+  useEffect(() => {
     if (!apiIsLoaded || !inputRef.current || !places) return
 
     const autocomplete = new places.Autocomplete(inputRef.current, options)
@@ -27,7 +33,6 @@ export const useAddressMarker = (onPlaceSelect, setValue, markerPosition) => {
       if (place?.geometry?.location) {
         const selectedLocation = { lat: place.geometry.location.lat(), lng: place.geometry.location.lng() }
         onPlaceSelect(selectedLocation)
-        map.panTo(selectedLocation)
       }
     })
 
