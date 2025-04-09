@@ -8,7 +8,7 @@ class AxiosInterceptors {
   #axios
 
   constructor(baseURL) {
-    this.#axios = axios.create({ baseURL })
+    this.#axios = axios.create({ baseURL, withCredentials: true })
   }
 
   setUpRequest() {
@@ -16,7 +16,7 @@ class AxiosInterceptors {
       (config) => {
         const token = tokenService.getToken()
 
-        // if (token) config.headers.set(`Authorization Bearer ${token}`)
+        if (token) config.headers.set(`Authorization Bearer ${token}`)
 
         return config
       },
@@ -34,6 +34,7 @@ class AxiosInterceptors {
       (error) => {
         console.log(error)
         snackbarManager.error(getValidateErrors(error?.code))
+
         return Promise.reject(error)
       },
     )

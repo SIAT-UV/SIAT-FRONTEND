@@ -11,7 +11,7 @@ import { Loader } from "../Loader"
 import { schemaRegister } from "../../schemas"
 
 export const Formulario = () => {
-  const { loading, data, fetch } = useFetchData(userRegister)
+  const { loading, fetch } = useFetchData(userRegister)
 
   const {
     register,
