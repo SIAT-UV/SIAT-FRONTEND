@@ -5,15 +5,15 @@ import { ModalContextProvider, UserAuthContextProvider } from "./context"
 
 export const AppProviders = ({ children }) => {
   return (
-    <BrowserRouter>
-      <UserAuthContextProvider>
+    <UserAuthContextProvider>
+      <BrowserRouter>
         <ModalContextProvider>
           <SnackbarProvider>
             <SnackbarConfigurator />
             {children}
           </SnackbarProvider>
         </ModalContextProvider>
-      </UserAuthContextProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </UserAuthContextProvider>
   )
 }

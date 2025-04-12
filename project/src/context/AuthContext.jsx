@@ -1,9 +1,15 @@
+import { useState } from "react"
 import { createContext } from "react"
+import { tokenService } from "../services"
 
 export const userAuthContext = createContext()
 
 export function UserAuthContextProvider({ children }) {
-  const login = (auth) => {}
+  const [user, setUser] = useState(null)
+  const login = (user) => {
+    setUser(user.username)
+    tokenService.setToken(user.access)
+  }
 
-  return <userAuthContext.Provider value={{ login }}>{children}</userAuthContext.Provider>
+  return <userAuthContext.Provider value={{ user, login }}>{children}</userAuthContext.Provider>
 }

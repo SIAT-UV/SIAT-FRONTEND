@@ -2,26 +2,13 @@ import { header, buttonsItem, loginButton, registerButton } from "./Header.modul
 import { Logo } from "../Logo"
 import { NavBar } from "../NavBar"
 import { Button } from "../Buttons"
-import { useEffect, useState } from "react"
-import { useModalContext } from "../../hooks"
+import { useMobile, useModalContext } from "../../hooks"
 
 export const Header = ({ children }) => {
   const { openModal } = useModalContext()
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 968)
+  const isMobile = useMobile()
 
   const handleClickModal = (modalId) => () => openModal(modalId)
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 968)
-    }
-
-    window.addEventListener("resize", handleResize)
-
-    return () => {
-      window.removeEventListener("resize", handleResize)
-    }
-  }, [])
 
   return (
     <header className={header}>
