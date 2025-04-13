@@ -22,9 +22,10 @@ export const Formulario = () => {
   })
 
   const onSubmit = (user) => {
-    const newUser = { ...user }
+    const newUser = structuredClone(user)
     delete newUser.confirmPassword
-    fetch(newUser)
+    const { promise } = fetch(newUser)
+    promise.then((response) => console.log(response))
   }
 
   if (loading) <Loader />

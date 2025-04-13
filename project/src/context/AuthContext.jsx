@@ -6,7 +6,10 @@ export const userAuthContext = createContext()
 
 export function UserAuthContextProvider({ children }) {
   const [user, setUser] = useState(null)
+
   const login = (user) => {
+    if (!user) return
+
     setUser(user.username)
     tokenService.setToken(user.access)
   }

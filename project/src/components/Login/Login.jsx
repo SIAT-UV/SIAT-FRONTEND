@@ -4,7 +4,7 @@ import { Button } from "../Buttons"
 import { CamposRegister } from "../CamposRegister/CamposRegister"
 import { FormLayout } from "../FormLayout/FormLayout"
 import { titulo, subtitulo } from "./Login.module.css"
-import { useAuthContext, useFetchData, useTokenService } from "../../hooks"
+import { useAuthContext, useFetchData } from "../../hooks"
 import { login } from "../../services"
 import { Loader } from "../Loader"
 import { userAuthContext } from "../../context"
@@ -13,8 +13,6 @@ import { schemaLogin } from "../../schemas"
 export const Login = () => {
   const { login: loginUser } = useAuthContext(userAuthContext)
   const { loading, fetch } = useFetchData(login)
-  const state = useTokenService()
-  console.log(state)
 
   const {
     register,
@@ -25,8 +23,8 @@ export const Login = () => {
   })
 
   const onSubmit = (user) => {
-    // const { promise } = fetch(user)
-    // promise.then((response) => loginUser(response))
+    const { promise } = fetch(user)
+    promise.then((response) => console.log(response))
   }
 
   if (loading) return <Loader />
