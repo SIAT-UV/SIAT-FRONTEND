@@ -5,7 +5,7 @@ export const InputForm = ({ name, control, label, className, type, step, placeho
   const setMaxDate = (event) => {
     if (type !== "date") return
 
-    const now = new Date().toISOString().split("T")[0]
+    const now = new Date().toLocaleDateString("en-ca")
     event.target.setAttribute("max", now)
   }
 

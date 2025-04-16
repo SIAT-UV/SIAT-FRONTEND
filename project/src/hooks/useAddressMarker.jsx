@@ -47,9 +47,10 @@ export const useAddressMarker = (onPlaceSelect, setValue, markerPosition) => {
       if (status !== "OK" || !results[0]) return
 
       const { lat, lng } = markerPosition
+      // console.log(`POINT (${lng} ${lat})`)
 
       setValue("accidentAddress", results[0].formatted_address, { shouldValidate: true })
-      setValue("accidentGeo", lat + ", " + lng)
+      setValue("accidentGeo", `POINT (${lng} ${lat})`)
     })
   }, [markerPosition, apiIsLoaded, inputRef, setValue])
 

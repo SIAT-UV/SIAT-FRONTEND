@@ -24,7 +24,7 @@ export const Login = () => {
 
   const onSubmit = (user) => {
     const { promise } = fetch(user)
-    promise.then((response) => console.log(response))
+    promise.then((response) => loginUser(response))
   }
 
   if (loading) return <Loader />

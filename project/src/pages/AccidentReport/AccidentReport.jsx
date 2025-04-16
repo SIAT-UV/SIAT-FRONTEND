@@ -6,7 +6,7 @@ import { useFetchData } from "../../hooks"
 import { report } from "../../services"
 import { formatData } from "../../utilities"
 import { ACCIDENT_FIELDS } from "../../constants"
-import { useEffect } from "react"
+import { Loader } from "../../components/Loader"
 
 export const AccidentReport = () => {
   const { loading, fetch } = useFetchData(report)
@@ -44,7 +44,7 @@ export const AccidentReport = () => {
       formData.append(key, data[key])
     })
 
-    // fetch(formData)
+    fetch(formatedData)
     reset()
   })
 

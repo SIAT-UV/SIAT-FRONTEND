@@ -1,8 +1,8 @@
 import axios from "axios"
 import { tokenService } from "./"
-import { BACK_URL } from "../constants"
 import { snackbarManager } from "./snackbarManager"
 import { getValidateErrors } from "../utilities"
+import { BACK_URL } from "../constants"
 
 class AxiosInterceptors {
   #axios
@@ -14,6 +14,10 @@ class AxiosInterceptors {
   setUpRequest() {
     this.#axios.interceptors.request.use(
       (config) => {
+        const token = tokenService.getToken()
+
+        if (token) config.headers["Authorization"] = `Bearer ${token}`
+
         return config
       },
       (error) => {
@@ -27,28 +31,28 @@ class AxiosInterceptors {
       (response) => {
         return response
       },
-      (error) => {
+      async (error) => {
         const originalRequest = error.config
 
-        if (error.response.status === 403 && !originalRequest._retry) {
+        if (error.response.status === 401 && !originalRequest._retry) {
           originalRequest._retry = true
+          console.log("Refresh")
 
-          axios
-            .post(`${BACK_URL}/api/refresh/`, tokenService.getToken(), { withCredentials: true })
-            .then((res) => {
-              tokenService.setToken(res.data.access)
-              originalRequest.headers["Authorization"] = `Bearer ${res.data.access}`
+          try {
+            const response = await axios.post("/api/refresh/", { access: tokenService.getToken() }, { withCredentials: true })
 
-              this.#axios(originalRequest)
-            })
-            .catch((err) => {
-              snackbarManager.error(getValidateErrors(err?.code))
-              return Promise.reject(err)
-            })
+            tokenService.setToken(response.data.access)
+            this.#axios(originalRequest)
+          } catch (errorRefresh) {
+            console.log(errorRefresh)
+            if (errorRefresh.response.data?.CODE_ERR) snackbarManager.error(getValidateErrors(errorRefresh.response.data.CODE_ERR))
+
+            return Promise.reject(errorRefresh)
+          }
         }
 
         console.log(error)
-        snackbarManager.error(getValidateErrors(error.code))
+        if (error.response.data?.CODE_ERR) snackbarManager.error(getValidateErrors(error.response.data.CODE_ERR))
 
         return Promise.reject(error)
       },
