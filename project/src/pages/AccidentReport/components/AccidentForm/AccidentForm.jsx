@@ -16,7 +16,7 @@ export const AccidentForm = ({ control, handleSubmit, errors }) => {
           <InputForm
             name="accidentTime"
             control={control}
-            label="Hora del Accidente"
+            label="Hora del Accidente (Ej: 05:30:00 pm)"
             className={input}
             type="time"
             step="1"

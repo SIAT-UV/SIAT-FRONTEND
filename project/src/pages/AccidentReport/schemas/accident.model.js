@@ -5,7 +5,7 @@ export const schema = z.object({
   accidentDate: z
     .string()
     .date("Formato inválido, se requiere (YYYY-MM-DD)")
-    .refine((date) => date <= new Date().toISOString().split("T")[0], { message: "La fecha no debe ser mayor que la actual" }),
+    .refine((date) => date <= new Date().toLocaleDateString("en-ca"), { message: "La fecha no debe ser mayor que la actual" }),
   accidentTime: z.string().time("Formato inválido, se requiere (HH:MM:SS)"),
   trafficControls: z.enum(ACCIDENTS_ENUM.trafficControls, { errorMap: () => ({ message: "Seleccione una opción válida" }) }),
   accidentType: z.enum(ACCIDENTS_ENUM.accidentType, { errorMap: () => ({ message: "Seleccione una opción válida" }) }),
@@ -20,4 +20,5 @@ export const schema = z.object({
     .refine((file) => file.size > 0, { message: "El archivo no puede estar vació" })
     .refine((file) => ["image/jpeg", "image/png"].includes(file.type), { message: "El archivo debe ser una imagen en formato jpeg o png" })
     .optional(),
+  accidentGeo: z.string(),
 })

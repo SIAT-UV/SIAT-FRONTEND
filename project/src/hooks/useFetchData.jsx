@@ -11,11 +11,11 @@ export const useFetchData = (apiCall, options = {}) => {
       const { call, controller } = apiCall(params)
 
       setLoading(true)
-      call
+      const promise = call
         .then((response) => {
           setData(response.data)
           setError(null)
-          options?.onSuccess?.(response.data)
+          return response.data
         })
         .catch((error) => {
           setError(error)
@@ -23,13 +23,18 @@ export const useFetchData = (apiCall, options = {}) => {
         .finally(() => {
           setLoading(false)
         })
-      return () => controller.abort()
+
+      return { promise, abort: () => controller.abort() }
     },
     [apiCall],
   )
 
   useEffect(() => {
-    if (options?.autoFetch) return fetch()
+    if (!options?.autoFetch) return
+
+    const { abort } = fetch()
+
+    return () => abort()
   }, [fetch, options?.autoFetch])
 
   return { loading, data, error, fetch }

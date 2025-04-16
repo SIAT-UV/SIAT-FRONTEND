@@ -1,19 +1,18 @@
-import { createContext, useContext, useState } from "react"
-import { initialState } from "../constants"
+import { useState } from "react"
+import { createContext } from "react"
 import { tokenService } from "../services"
 
 export const userAuthContext = createContext()
 
 export function UserAuthContextProvider({ children }) {
-  const [auth, setAuth] = useState(() => {
-    const user = window.localStorage.getItem("user")
-    return user ? JSON.parse(user) : initialState
-  })
+  const [user, setUser] = useState(null)
 
-  const login = (auth) => {
-    setAuth(auth)
-    tokenService.setToken(auth.access)
+  const login = (user) => {
+    if (!user) return
+
+    setUser(user.username)
+    tokenService.setToken(user.access)
   }
 
-  return <userAuthContext.Provider value={{ auth, login }}>{children}</userAuthContext.Provider>
+  return <userAuthContext.Provider value={{ user, login }}>{children}</userAuthContext.Provider>
 }

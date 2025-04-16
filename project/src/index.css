@@ -1,6 +1,7 @@
 :root {
   --font-primary: "Nunito", sans-serif;
   --font-secondary: "Merriweather", serif;
+  --bg-main-color: #fff;
   --color-primary: #654bfe;
   --color-secondary: #f7f6fe;
   --font-size-small: 0.8rem;
@@ -8,6 +9,7 @@
   --font-size-large: 1.1rem;
   --shadow-color: #bbb;
   --error-color: #d10d0d;
+  --main-padding: 2.5rem;
 }
 
 @font-face {
@@ -53,12 +55,13 @@
 
 body {
   margin: 0;
+  background-color: var(--bg-main-color);
   font-family: var(--font-primary);
   overflow-x: clip;
 }
 
 main {
-  padding: 2.5rem;
+  padding: var(--main-padding);
 }
 
 h1,

@@ -1,15 +1,13 @@
 .banner {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    height: 90vmin;
-    background-repeat: no-repeat;
-    background-position: top;
-    background-size: cover;
-    width: 100vw;
-    margin-left: -2.5rem;
-    margin-top: -39px;
-  }
-
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 90vmin;
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover;
+  width: 100vw;
+  margin-left: calc(-1 * var(--main-padding));
+  margin-top: calc(-1 * var(--main-padding));
+}

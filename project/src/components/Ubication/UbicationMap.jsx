@@ -1,4 +1,4 @@
-import { AdvancedMarker, APIProvider, Map } from "@vis.gl/react-google-maps"
+import { AdvancedMarker, APIProvider, Map, useMap } from "@vis.gl/react-google-maps"
 import { DEFAULT_CENTER, GOOGLE_MAPS_API_KEY, MAP_ID } from "../../constants"
 import { UbicationInput } from "./UbicationInput"
 import { useState } from "react"

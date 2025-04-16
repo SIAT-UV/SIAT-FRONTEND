@@ -11,7 +11,7 @@ import { Loader } from "../Loader"
 import { schemaRegister } from "../../schemas"
 
 export const Formulario = () => {
-  const { loading, data, fetch } = useFetchData(userRegister)
+  const { loading, fetch } = useFetchData(userRegister)
 
   const {
     register,
@@ -22,9 +22,10 @@ export const Formulario = () => {
   })
 
   const onSubmit = (user) => {
-    const newUser = { ...user }
+    const newUser = structuredClone(user)
     delete newUser.confirmPassword
-    fetch(newUser)
+    const { promise } = fetch(newUser)
+    promise.then((response) => console.log(response))
   }
 
   if (loading) <Loader />

@@ -6,10 +6,18 @@ import { useFetchData } from "../../hooks"
 import { report } from "../../services"
 import { formatData } from "../../utilities"
 import { ACCIDENT_FIELDS } from "../../constants"
+import { Loader } from "../../components/Loader"
 
 export const AccidentReport = () => {
   const { loading, fetch } = useFetchData(report)
-  const methods = useForm({
+  const {
+    control,
+    register,
+    setValue,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
     resolver: zodResolver(schema),
     defaultValues: {
       accidentDate: "",
@@ -23,36 +31,27 @@ export const AccidentReport = () => {
       accidentNeighbor: "",
       accidentAddress: "",
       accidentImage: undefined,
+      accidentGeo: "",
     },
   })
 
-  const {
-    control,
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = methods
-
   const onSubmit = handleSubmit((data) => {
-    console.log(data)
-    // const formatedData = formatData(data, ACCIDENT_FIELDS)
+    const formatedData = formatData(data, ACCIDENT_FIELDS)
 
-    // console.log(formatedData)
     const formData = new FormData()
 
     Object.keys(data).forEach((key) => {
       formData.append(key, data[key])
     })
 
-    fetch(formData)
+    fetch(formatedData)
     reset()
   })
 
   if (loading) return <Loader />
 
   return (
-    <FormProvider {...methods}>
+    <FormProvider register={register} setValue={setValue}>
       <h2>Registrar Accidente</h2>
       <AccidentForm control={control} register={register} handleSubmit={onSubmit} errors={errors} />
     </FormProvider>

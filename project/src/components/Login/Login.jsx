@@ -12,7 +12,7 @@ import { schemaLogin } from "../../schemas"
 
 export const Login = () => {
   const { login: loginUser } = useAuthContext(userAuthContext)
-  const { loading, fetch } = useFetchData(login, { onSuccess: (response) => loginUser(response) })
+  const { loading, fetch } = useFetchData(login)
 
   const {
     register,
@@ -23,7 +23,8 @@ export const Login = () => {
   })
 
   const onSubmit = (user) => {
-    fetch(user)
+    const { promise } = fetch(user)
+    promise.then((response) => loginUser(response))
   }
 
   if (loading) return <Loader />
