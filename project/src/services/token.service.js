@@ -1,22 +1,26 @@
-class State {
+class Service {
+  #observers
+
   constructor() {
-    this.observers = new Set()
+    this.#observers = []
   }
 
   subscribe(observer) {
-    this.observers.add(observer)
+    this.#observers = [...this.#observers, observer]
 
-    return () => this.observers.delete(observer)
+    return () => {
+      this.#observers = this.#observers.filter((obs) => obs !== observer)
+    }
   }
 
   notify() {
-    this.observers.forEach((observer) => {
+    this.#observers.forEach((observer) => {
       observer()
     })
   }
 }
 
-class TokenService extends State {
+class TokenService extends Service {
   #state
 
   constructor() {
@@ -31,7 +35,7 @@ class TokenService extends State {
   }
 
   setToken(token) {
-    this.#state.token = token
+    this.#state = { ...this.#state, token }
     this.notify()
   }
 
