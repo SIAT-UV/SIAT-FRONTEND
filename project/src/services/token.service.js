@@ -23,7 +23,6 @@ class TokenService extends State {
     super()
     this.#state = {
       token: null,
-      isRefreshing: false,
     }
   }
 
@@ -33,15 +32,6 @@ class TokenService extends State {
 
   setToken(token) {
     this.#state.token = token
-    this.notify()
-  }
-
-  getIsRefreshing() {
-    return this.#state.isRefreshing
-  }
-
-  setIsRefreshing(isRefreshing) {
-    this.#state.isRefreshing = isRefreshing
     this.notify()
   }
 

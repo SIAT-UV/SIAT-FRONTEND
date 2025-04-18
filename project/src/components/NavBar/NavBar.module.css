@@ -1,5 +1,5 @@
 .navBar {
-  margin-left: auto;
+  order: 1;
 }
 
 .menu {
@@ -37,6 +37,11 @@
 }
 
 @media screen and (min-width: 960px) {
+  .navBar {
+    margin-left: auto;
+    order: 0;
+  }
+
   .navBar {
     width: 100%;
     margin-left: 5em;

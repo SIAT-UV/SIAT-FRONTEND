@@ -2,12 +2,14 @@
   position: relative;
   display: flex;
   align-items: center;
-  padding-top: 0.5rem;
   background-color: white;
-  padding-bottom: 0.5rem;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding-block: 0.5rem;
+  padding-inline: 1.5rem;
   box-shadow: 0px 0px 3px 0px var(--shadow-color);
+}
+
+.header > :first-child {
+  margin-right: auto;
 }
 
 .buttonsItem {
@@ -22,6 +24,10 @@
     padding-bottom: 0.8rem;
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+
+  .header > :first-child {
+    margin-right: 0;
   }
 
   .buttonsItem {

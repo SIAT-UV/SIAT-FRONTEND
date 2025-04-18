@@ -39,7 +39,7 @@ class AxiosInterceptors {
           console.log("Refresh")
 
           try {
-            const response = await axios.post("/api/refresh/", { access: tokenService.getToken() }, { withCredentials: true })
+            const response = await axios.post("/api/refresh/", undefined, { withCredentials: true })
 
             tokenService.setToken(response.data.access)
             this.#axios(originalRequest)

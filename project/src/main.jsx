@@ -4,8 +4,6 @@ import { App } from "./App"
 import { AppProviders } from "./AppProviders"
 import "./index.css"
 import { axiosService } from "./services"
-import { Dashboard } from "./components/Dashboard/Dashboard"
-
 
 axiosService.initAxios()
 

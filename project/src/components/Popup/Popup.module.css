@@ -1,0 +1,23 @@
+.template {
+  font-size: var(--font-size-medium);
+}
+
+.popup {
+  position: relative;
+  cursor: pointer;
+  font-size: inherit;
+  color: inherit;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.popupMain {
+  display: none;
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+}
+
+.popup:focus-within .popupMain {
+  display: block;
+}

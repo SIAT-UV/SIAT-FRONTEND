@@ -14,5 +14,10 @@ export function UserAuthContextProvider({ children }) {
     tokenService.setToken(user.access)
   }
 
-  return <userAuthContext.Provider value={{ user, login }}>{children}</userAuthContext.Provider>
+  const logout = () => {
+    setUser(null)
+    tokenService.setToken(null)
+  }
+
+  return <userAuthContext.Provider value={{ user, login, logout }}>{children}</userAuthContext.Provider>
 }
