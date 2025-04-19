@@ -1,0 +1,24 @@
+.profileHeader {
+  --hover-bg-color: rgb(200 200 200 / 0.25);
+
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  padding-inline: 0.5em;
+  border-radius: 5px;
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.profileHeader:focus {
+  background-color: var(--hover-bg-color);
+  box-shadow: 0px 0px 2px 2px var(--hover-bg-color);
+}
+
+@media screen and (min-width: 960px) {
+  .profileHeader:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0px 0px 2px 2px var(--hover-bg-color);
+  }
+}

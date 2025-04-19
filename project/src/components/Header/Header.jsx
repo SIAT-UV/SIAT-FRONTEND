@@ -2,9 +2,11 @@ import { header, buttonsItem, loginButton, registerButton } from "./Header.modul
 import { Logo } from "../Logo"
 import { NavBar } from "../NavBar"
 import { Button } from "../Buttons"
-import { useMobile, useModalContext } from "../../hooks"
+import { useAuthContext, useMobile, useModalContext } from "../../hooks"
+import { Profile } from "../Profile"
 
 export const Header = ({ children }) => {
+  const { user } = useAuthContext()
   const { openModal } = useModalContext()
   const isMobile = useMobile()
 
@@ -14,15 +16,18 @@ export const Header = ({ children }) => {
     <header className={header}>
       <Logo />
       <NavBar>
-        <li className={buttonsItem}>
-          <Button handleClick={handleClickModal("login")} otherClass={loginButton} alternate={isMobile}>
-            Iniciar sesión
-          </Button>
-          <Button handleClick={handleClickModal("register")} otherClass={registerButton} alternate={isMobile}>
-            Registrarse
-          </Button>
-        </li>
+        {!user && (
+          <li className={buttonsItem}>
+            <Button handleClick={handleClickModal("login")} otherClass={loginButton} alternate={isMobile}>
+              Iniciar sesión
+            </Button>
+            <Button handleClick={handleClickModal("register")} otherClass={registerButton} alternate={isMobile}>
+              Registrarse
+            </Button>
+          </li>
+        )}
       </NavBar>
+      <Profile />
       {children}
     </header>
   )

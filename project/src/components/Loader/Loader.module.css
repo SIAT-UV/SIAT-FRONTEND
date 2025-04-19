@@ -1,5 +1,15 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: inherit;
+}
+
 .svg {
-  width: 4em;
+  width: 4.5em;
   transform-origin: center;
   animation: rotate4 2s linear infinite;
 }
@@ -7,7 +17,7 @@
 .circle {
   fill: none;
   stroke: var(--color-primary);
-  stroke-width: 2;
+  stroke-width: 3;
   stroke-dasharray: 1, 200;
   stroke-dashoffset: 0;
   stroke-linecap: round;
