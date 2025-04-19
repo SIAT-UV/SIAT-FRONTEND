@@ -16,7 +16,7 @@ export class ErrorBoundary extends Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    console.error("Ocurrio un error en la aplicación:", error, errorInfo)
+    console.error("Ocurrió un error en la aplicación:", error, errorInfo)
   }
 
   render() {
