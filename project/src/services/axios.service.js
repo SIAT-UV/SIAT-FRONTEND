@@ -42,9 +42,12 @@ class AxiosInterceptors {
             const response = await call
 
             tokenService.setToken(response.data.access)
-            // return this.#axios(originalRequest)
+            return this.#axios(originalRequest)
           } catch (errorRefresh) {
             console.log(errorRefresh)
+
+            tokenService.setIsAuthenticated(false)
+
             if (errorRefresh.response.data?.CODE_ERR) snackbarManager.error(getValidateErrors(errorRefresh.response.data.CODE_ERR))
 
             return Promise.reject(errorRefresh)

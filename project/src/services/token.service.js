@@ -27,6 +27,7 @@ class TokenService extends Service {
     super()
     this.#state = {
       token: null,
+      isAuthenticated: false,
     }
   }
 
@@ -36,6 +37,15 @@ class TokenService extends Service {
 
   setToken(token) {
     this.#state = { ...this.#state, token }
+    this.notify()
+  }
+
+  getIsAuthenticated() {
+    return this.#state.isAuthenticated
+  }
+
+  setIsAuthenticated(isAuthenticated) {
+    this.#state = { ...this.#state, isAuthenticated }
     this.notify()
   }
 
