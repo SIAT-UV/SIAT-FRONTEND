@@ -28,7 +28,7 @@ export const Login = () => {
     const { promise } = fetch(user)
     promise.then((response) => {
       loginUser(response)
-      navigate("/")
+      navigate("/dashboard")
     })
   }
 

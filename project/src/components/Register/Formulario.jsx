@@ -29,7 +29,7 @@ export const Formulario = () => {
     const { promise } = fetch(newUser)
     promise.then((response) => {
       console.log(response)
-      navigate("/")
+      navigate("/dashboard")
     })
   }
 
