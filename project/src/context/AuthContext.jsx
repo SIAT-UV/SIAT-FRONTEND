@@ -30,7 +30,7 @@ export function UserAuthContextProvider({ children }) {
 
     call
       .then((response) => {
-        login({ username: response.data.user?.nombre, access: response.data.access })
+        login({ username: response.data.username, access: response.data.access })
       })
       .catch((error) => {
         if (error.code === "ERR_CANCELED") return
