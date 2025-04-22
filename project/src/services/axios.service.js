@@ -1,5 +1,5 @@
 import axios from "axios"
-import { tokenService } from "./"
+import { refresh, tokenService } from "./"
 import { snackbarManager } from "./snackbarManager"
 import { getValidateErrors } from "../utilities"
 import { BACK_URL } from "../constants"
@@ -36,18 +36,23 @@ class AxiosInterceptors {
 
         if (error.response.status === 401 && !originalRequest._retry) {
           originalRequest._retry = true
-          console.log("Refresh")
 
           try {
-            const response = await axios.post("/api/refresh/", { access: tokenService.getToken() }, { withCredentials: true })
+            const { call } = refresh()
+            const response = await call
 
             tokenService.setToken(response.data.access)
-            this.#axios(originalRequest)
+            return this.#axios(originalRequest)
           } catch (errorRefresh) {
             console.log(errorRefresh)
+
+            tokenService.setIsAuthenticated(false)
+
             if (errorRefresh.response.data?.CODE_ERR) snackbarManager.error(getValidateErrors(errorRefresh.response.data.CODE_ERR))
 
             return Promise.reject(errorRefresh)
+          } finally {
+            tokenService.setIsRefreshing(false)
           }
         }
 

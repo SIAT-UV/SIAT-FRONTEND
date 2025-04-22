@@ -5,8 +5,6 @@ import { AppProviders } from "./AppProviders"
 import "./index.css"
 import { axiosService } from "./services"
 
-
-
 axiosService.initAxios()
 
 createRoot(document.getElementById("root")).render(
