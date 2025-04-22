@@ -1,11 +1,9 @@
-import React from 'react';
-import './Dashboard.css';
-import { Button } from '../Buttons';
-import { RecentAccidents } from '../RecentAccidents/RecentAccidents';
-
+import React from "react"
+import "./Dashboard.css"
+import { Button } from "../../components/Buttons"
+import { RecentAccidents } from "../../components/RecentAccidents/RecentAccidents"
 
 export const Dashboard = () => {
-
   const cards = [
     { title: "Total de Accidentes", value: "156 incidentes este mes", button: "Ver Detalles" },
     { title: "Casos Críticos", value: "23 casos críticos este mes", button: "Ver casos" },
@@ -19,7 +17,7 @@ export const Dashboard = () => {
           <div className="card" key={index}>
             <h2>{card.title}</h2>
             <p>{card.value}</p>
-            <Button onClick={card.button} > {card.button} </Button>
+            <Button onClick={card.button}> {card.button} </Button>
           </div>
         ))}
       </div>

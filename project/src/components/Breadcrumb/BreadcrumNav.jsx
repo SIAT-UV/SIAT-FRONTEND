@@ -16,6 +16,8 @@ export const BreadcrumNav = ({ paths }) => {
         {paths.map((path, index) => {
           const routeTo = `/${paths.slice(0, index + 1).join("/")}`
 
+          if (path === "private") return null
+
           return (
             <li key={routeTo} className={breadcrumItem}>
               <Link to={routeTo} className={breadcrumLink}>
