@@ -1,41 +1,41 @@
-import React, { useEffect, useState } from 'react'
-import { RequestRecentAccidents } from '../../services/RequestRecentAccidents'
-import './RecentAccidents.css'
+import React, { useEffect, useState } from "react"
+import { RequestRecentAccidents } from "../../services/RequestRecentAccidents"
+import "./RecentAccidents.css"
 
 export const RecentAccidents = () => {
-  const [accidents, setAccidents] = useState([]);
+  const [accidents, setAccidents] = useState([])
 
   const fetchAccidents = () => {
-    const { call, controller } = RequestRecentAccidents();
+    const { call, controller } = RequestRecentAccidents()
     call
       .then((response) => {
-        console.log("Respuesta de accidentes recientes:", response.data.results);
-        setAccidents(response.data.results);
+        console.log("Respuesta de accidentes recientes:", response.data.results)
+        setAccidents(response.data.results)
       })
       .catch((error) => {
-        if (error.name !== 'CanceledError') {
-          console.error('Error al cargar accidentes recientes:', error);
+        if (error.name !== "CanceledError") {
+          console.error("Error al cargar accidentes recientes:", error)
         }
-      });
+      })
 
-    return controller;
-  };
+    return controller
+  }
 
   useEffect(() => {
-    const controller = fetchAccidents();
+    const controller = fetchAccidents()
 
     // Evento personalizado: refrescar datos al registrar nuevo accidente
     const handleUpdate = () => {
-      fetchAccidents();
-    };
+      fetchAccidents()
+    }
 
-    window.addEventListener('accident-registered', handleUpdate);
+    window.addEventListener("accident-registered", handleUpdate)
 
     return () => {
-      controller.abort();
-      window.removeEventListener('accident-registered', handleUpdate);
-    };
-  }, []);
+      controller.abort()
+      window.removeEventListener("accident-registered", handleUpdate)
+    }
+  }, [])
 
   return (
     <div className="recent-accidents">
@@ -44,15 +44,11 @@ export const RecentAccidents = () => {
       {accidents.length > 0 ? (
         accidents.map((acc, i) => (
           <div className="accident-row" key={i}>
+            <span>{acc.FECHA && acc.HORA ? new Date(`${acc.FECHA}T${acc.HORA}`).toLocaleDateString("es-CO") : "Fecha no disponible"}</span>
             <span>
               {acc.FECHA && acc.HORA
-                ? new Date(`${acc.FECHA}T${acc.HORA}`).toLocaleDateString('es-CO')
-                : 'Fecha no disponible'}
-            </span>
-            <span>
-              {acc.FECHA && acc.HORA
-                ? new Date(`${acc.FECHA}T${acc.HORA}`).toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit' })
-                : 'Hora no disponible'}
+                ? new Date(`${acc.FECHA}T${acc.HORA}`).toLocaleTimeString("es-CO", { hour: "2-digit", minute: "2-digit" })
+                : "Hora no disponible"}
             </span>
             <span>{acc.BARRIO_HECHO}</span>
             <span>{acc.CLASE_DE_ACCIDENTE}</span>
@@ -64,6 +60,5 @@ export const RecentAccidents = () => {
         <p>No hay accidentes recientes.</p>
       )}
     </div>
-  );
-};
-
+  )
+}

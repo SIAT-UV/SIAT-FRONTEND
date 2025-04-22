@@ -56,7 +56,7 @@ class AxiosInterceptors {
           }
         }
 
-        console.log(error)
+        if (error.code !== "ERR_CANCELED") console.log(error)
         if (error.response?.data?.CODE_ERR) snackbarManager.error(getValidateErrors(error.response?.data?.CODE_ERR))
 
         return Promise.reject(error)
