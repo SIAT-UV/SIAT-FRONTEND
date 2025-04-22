@@ -1,0 +1,36 @@
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #f2f2f2, #e6e6e6);
+}
+
+.card {
+  background-color: white;
+  padding: 3rem 4rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+}
+
+.title {
+  font-size: 5rem;
+  font-weight: 700;
+  color: #ff4d4f;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.message {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+}

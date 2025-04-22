@@ -9,8 +9,10 @@ import { useFetchData } from "../../hooks"
 import { register as userRegister } from "../../services"
 import { Loader } from "../Loader"
 import { schemaRegister } from "../../schemas"
+import { Link, useNavigate } from "react-router-dom"
 
 export const Formulario = () => {
+  const navigate = useNavigate()
   const { loading, fetch } = useFetchData(userRegister)
 
   const {
@@ -25,7 +27,10 @@ export const Formulario = () => {
     const newUser = structuredClone(user)
     delete newUser.confirmPassword
     const { promise } = fetch(newUser)
-    promise.then((response) => console.log(response))
+    promise.then((response) => {
+      console.log(response)
+      navigate("/")
+    })
   }
 
   if (loading) <Loader />
@@ -41,7 +46,11 @@ export const Formulario = () => {
         <CamposRegister register={register} name="email" errors={errors.email} label="Correo" />
         <CamposRegister register={register} name="password" type="password" errors={errors.password} label="Contraseña" />
         <CamposRegister register={register} name="confirmPassword" type="password" errors={errors.confirmPassword} label="Confirmar Contraseña" />
-
+        <p>
+          Ya tienes una cuenta?
+          <span> </span>
+          <Link to="/login">Inicia Sesión</Link>
+        </p>
         <Button type="submit">Registrarme</Button>
       </form>
     </FormLayout>

@@ -1,0 +1,24 @@
+.buttonsItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+}
+
+.buttonLink {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media screen and (min-width: 960px) {
+  .buttonsItem {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.7em;
+    margin-left: auto;
+  }
+
+  .loginButton,
+  .registerButton {
+    flex-grow: 1;
+  }
+}

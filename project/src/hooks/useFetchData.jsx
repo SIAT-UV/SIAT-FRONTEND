@@ -19,6 +19,7 @@ export const useFetchData = (apiCall, options = {}) => {
         })
         .catch((error) => {
           setError(error)
+          return Promise.reject(error)
         })
         .finally(() => {
           setLoading(false)

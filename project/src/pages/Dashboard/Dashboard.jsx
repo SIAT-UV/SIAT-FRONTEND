@@ -13,7 +13,7 @@ export const Dashboard = () => {
     }
     // Puedes manejar los otros botones aquí también si lo deseas
   };
-
+  
   const cards = [
     { title: 'Total de Accidentes', value: '156 incidentes este mes', button: 'Ver Detalles' },
     { title: 'Casos Críticos', value: '23 casos críticos este mes', button: 'Ver casos' },

@@ -53,7 +53,7 @@ export const AccidentReport = () => {
   return (
     <FormProvider register={register} setValue={setValue}>
       <h2>Registrar Accidente</h2>
-      <AccidentForm control={control} register={register} handleSubmit={onSubmit} errors={errors} />
+      <AccidentForm control={control} handleSubmit={onSubmit} errors={errors} />
     </FormProvider>
   )
 }

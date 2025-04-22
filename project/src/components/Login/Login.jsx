@@ -9,8 +9,10 @@ import { login } from "../../services"
 import { Loader } from "../Loader"
 import { userAuthContext } from "../../context"
 import { schemaLogin } from "../../schemas"
+import { Link, useNavigate } from "react-router-dom"
 
 export const Login = () => {
+  const navigate = useNavigate()
   const { login: loginUser } = useAuthContext(userAuthContext)
   const { loading, fetch } = useFetchData(login)
 
@@ -24,7 +26,10 @@ export const Login = () => {
 
   const onSubmit = (user) => {
     const { promise } = fetch(user)
-    promise.then((response) => loginUser(response))
+    promise.then((response) => {
+      loginUser(response)
+      navigate("/")
+    })
   }
 
   if (loading) return <Loader />
@@ -35,7 +40,12 @@ export const Login = () => {
       <h2 className={subtitulo}>Ingresa tus datos para iniciar sesión</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <CamposRegister register={register} name="identificacion" errors={errors.identificacion} label="Identificación" />
-        <CamposRegister register={register} type="password" name="contraseña" errors={errors.contraseña} label="contraseña" />
+        <CamposRegister register={register} type="password" name="contraseña" errors={errors.contraseña} label="Contraseña" />
+        <p>
+          No tienes una cuenta?
+          <span> </span>
+          <Link to="/register">Registrate</Link>
+        </p>
         <Button type="submit">Iniciar Sesión</Button>
       </form>
     </FormLayout>

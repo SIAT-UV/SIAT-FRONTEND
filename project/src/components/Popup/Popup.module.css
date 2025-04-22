@@ -16,6 +16,7 @@
   position: absolute;
   top: calc(100% + 10px);
   right: 0;
+  z-index: 10;
 }
 
 .popup:focus-within .popupMain {
