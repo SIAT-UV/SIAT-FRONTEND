@@ -1,16 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Dashboard.css';
-import { Button } from '../Buttons';
-import { RecentAccidents } from '../RecentAccidents/RecentAccidents';
-
+import { Button } from '../../components/Buttons';
+import { RecentAccidents } from '../../components/RecentAccidents/RecentAccidents';
+import { MonthlyAccidents } from '../../components/MonthlyAccidents/MonthlyAccidents'; // importa el componente
 
 export const Dashboard = () => {
+  const [showMonthlyAccidents, setShowMonthlyAccidents] = useState(false);
+
+  const handleCardClick = (title) => {
+    if (title === 'Total de Accidentes') {
+      setShowMonthlyAccidents(true);
+    }
+    // Puedes manejar los otros botones aquí también si lo deseas
+  };
 
   const cards = [
-    { title: "Total de Accidentes", value: "156 incidentes este mes", button: "Ver Detalles" },
-    { title: "Casos Críticos", value: "23 casos críticos este mes", button: "Ver casos" },
-    { title: "Área de Alto Riesgo", value: "12 zonas identificadas", button: "Ver Mapa" },
-  ]
+    { title: 'Total de Accidentes', value: '156 incidentes este mes', button: 'Ver Detalles' },
+    { title: 'Casos Críticos', value: '23 casos críticos este mes', button: 'Ver casos' },
+    { title: 'Área de Alto Riesgo', value: '12 zonas identificadas', button: 'Ver Mapa' },
+  ];
 
   return (
     <div className="dashboard">
@@ -19,10 +27,15 @@ export const Dashboard = () => {
           <div className="card" key={index}>
             <h2>{card.title}</h2>
             <p>{card.value}</p>
-            <Button onClick={card.button} > {card.button} </Button>
+            <Button onClick={() => handleCardClick(card.title)}>{card.button}</Button>
           </div>
         ))}
       </div>
+
+      {/* Mostrar MonthlyAccidents solo si se activó */}
+      {showMonthlyAccidents && (
+        <MonthlyAccidents onClose={() => setShowMonthlyAccidents(false)} />
+      )}
 
       <RecentAccidents />
 
@@ -34,5 +47,5 @@ export const Dashboard = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

@@ -1,4 +1,14 @@
-.normasContainer h1 {
-    font-family: "Merriweather", sans-serif;
-    font-size: 1.10rem;
+.normasContainer {    
+    width: 90%;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 3em;
+    margin-bottom: 1em;
+    text-align: justify;
 }
+
+   .normasContainer h1 {
+        font-family: "Merriweather", sans-serif;
+        font-size: 1.10rem;
+    }
+    
