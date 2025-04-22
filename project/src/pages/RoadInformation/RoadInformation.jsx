@@ -5,6 +5,9 @@ import preventImg from "../../assets/images/signs/preventivas_page-0001_crop1654
 import ruleImg from "../../assets/images/signs/reglamentarias_page-0001_crop1654644553211.jpg_1259879939.webp"
 import infoImg from "../../assets/images/signs/informativas_page-0001_crop1654645015111.jpg_2144309606.webp"
 import tranImg from "../../assets/images/signs/SEÑALES-DE-OBRA-400x517.jpg"
+import RetenImg from "../../assets/images/signs/detencion.jpg"
+import { Normas } from "./components/Normas/Normas"
+
 
 export const RoadInformation = () => {
   return (
@@ -85,6 +88,22 @@ export const RoadInformation = () => {
           </ul>
         </TrafficSign>
       </TrafficSigns>
+      <Introduction title="Las Normas de Tránsito Más Importantes Que Deberías Conocer en Colombian">
+          <article>
+            <p>
+            Conocer y respetar las normas de tránsito es fundamental para garantizar la seguridad vial en Colombia. 
+            Ya seas conductor, pasajero o peatón, estas reglas buscan reducir accidentes y mejorar la movilidad en las vías del país. </p>
+            <p>Aquí te compartimos las más importantes:</p>
+          </article>
+      </Introduction>
+      
+      
+      <img src={RetenImg}   alt="Normas de tránsito" />
+      
+     
+      <Normas>    </Normas>
+      
+
     </>
   )
 }

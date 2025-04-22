@@ -32,28 +32,16 @@ export const MonthlyAccidents = ({ onClose }) => {
     fetchData()
   }, [year, month])
 
-  const handleOverlayClick = (e) => {
-    if (e.target.classList.contains('modal-overlay')) {
-      onClose()
-    }
-  }
-
   return (
     <AnimatePresence>
-      <motion.div 
-        className="modal-overlay"
-        onClick={handleOverlayClick}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
+      <motion.div
+        className="monthly-accidents-wrapper"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+        transition={{ duration: 0.3 }}
       >
-        <motion.div 
-          className="modal-content"
-          initial={{ y: -100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: -100, opacity: 0 }}
-          transition={{ duration: 0.3 }}
-        >
+        <div className="modal-content">
           <div className="monthly-accidents-header">
             <h2 className="monthly-accidents-title">Accidentes de {month}/{year}</h2>
             <button onClick={onClose} className="close-button">Cerrar</button>
@@ -103,10 +91,8 @@ export const MonthlyAccidents = ({ onClose }) => {
           ) : (
             <p className="no-data-text">No se encontraron accidentes en este mes.</p>
           )}
-        </motion.div>
+        </div>
       </motion.div>
     </AnimatePresence>
   )
 }
-
-

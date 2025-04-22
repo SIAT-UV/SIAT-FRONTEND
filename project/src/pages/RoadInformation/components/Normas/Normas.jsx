@@ -4,8 +4,8 @@ import { normasContainer } from './Normas.module.css'
 
 export const Normas = () => {
     return (
-        
         <div className={normasContainer}>
+ 
             <h1>1. Uso obligatorio del cinturon de seguridad </h1>
             <p>
             El uso del cinturón de seguridad es obligatorio para todos los ocupantes del vehículo, tanto en asientos delanteros como traseros. 
