@@ -11,22 +11,21 @@
 
 .card-container {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   margin-bottom: 3rem;
-}
-
-.card-container p {
-  font-size: 0.9rem;
-  font-family: var(--font-primary);
-  margin-bottom: 1.5rem;
+  justify-content: center;
 }
 
 .card {
   background-color: #f4f4ff;
   border-radius: 15px;
   padding: 1.5rem;
-  flex: 1;
+  flex: 1 1 250px;
+  max-width: 300px;
+  min-width: 240px;
   margin-top: 0.2rem;
+  box-sizing: border-box;
 }
 
 .card h2 {
@@ -35,8 +34,15 @@
   margin-bottom: 1.5rem;
 }
 
+.card-container p {
+  font-size: 0.9rem;
+  font-family: var(--font-primary);
+  margin-bottom: 1.5rem;
+}
+
 .recent-accidents {
   margin-top: 2rem;
+  overflow-x: auto;
 }
 
 .accident-row {
@@ -62,4 +68,31 @@
   display: flex;
   flex-direction: row;
   gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ✅ Media Queries para responsividad */
+
+@media (max-width: 768px) {
+  .card-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .accident-row {
+    grid-template-columns: 1fr 1fr;
+    grid-row-gap: 0.5rem;
+    padding: 1rem 0;
+  }
+
+  .accident-row span:nth-child(3),
+  .accident-row span:nth-child(4),
+  .accident-row span:nth-child(5) {
+    grid-column: span 2;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+    gap: 1rem;
+  }
 }
