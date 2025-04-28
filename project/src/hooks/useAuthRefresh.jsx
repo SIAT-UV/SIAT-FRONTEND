@@ -1,13 +1,9 @@
 import { useEffect, useState } from "react"
-import { createContext } from "react"
-import { refresh, tokenService } from "../services"
-import { Loader } from "../components/Loader"
-import { useTokenService } from "../hooks/useTokenService"
 import { STATUS } from "../constants"
+import { useTokenService } from "./useTokenService"
+import { refresh, tokenService } from "../services"
 
-export const userAuthContext = createContext()
-
-export function UserAuthContextProvider({ children }) {
+export const useAuthRefresh = () => {
   const { isAuthenticated } = useTokenService()
   const [status, setStatus] = useState(STATUS.loading)
   const [user, setUser] = useState(null)
@@ -52,9 +48,5 @@ export function UserAuthContextProvider({ children }) {
     logout()
   }, [isAuthenticated, user])
 
-  if (status === STATUS.loading) {
-    return <Loader />
-  }
-
-  return <userAuthContext.Provider value={{ user, status, login, logout }}>{children}</userAuthContext.Provider>
+  return { user, status, login, logout }
 }
