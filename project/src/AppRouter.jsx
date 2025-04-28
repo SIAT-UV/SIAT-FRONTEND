@@ -14,7 +14,7 @@ export const AppRouter = () => {
   return (
     <RoutesNotFound>
       <Route element={<MainLayout />}>
-        <Route path="/" element={<Inicio />} />
+        <Route index element={<Inicio />} />
         <Route path="/mapa" element={<h2>Mapa</h2>} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/informacion-vial" element={<RoadInformation />} />

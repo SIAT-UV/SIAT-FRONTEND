@@ -3,7 +3,7 @@ import { FormProvider, useForm } from "react-hook-form"
 import { schema } from "./schemas/accident.model"
 import { AccidentForm } from "./components/AccidentForm"
 import { useFetchData } from "../../hooks"
-import { report } from "../../services"
+import { report, snackbarManager } from "../../services"
 import { formatData } from "../../utilities"
 import { ACCIDENT_FIELDS } from "../../constants"
 import { Loader } from "../../components/Loader"
@@ -44,7 +44,8 @@ export const AccidentReport = () => {
       formData.append(key, data[key])
     })
 
-    fetch(formatedData)
+    const { promise } = fetch(formatedData)
+    promise.then((_) => snackbarManager.success("Se registro correctamente el accidente"))
     reset()
   })
 

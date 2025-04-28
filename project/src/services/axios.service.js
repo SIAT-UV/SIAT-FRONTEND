@@ -51,8 +51,6 @@ class AxiosInterceptors {
             if (errorRefresh.response.data?.CODE_ERR) snackbarManager.error(getValidateErrors(errorRefresh.response.data.CODE_ERR))
 
             return Promise.reject(errorRefresh)
-          } finally {
-            tokenService.setIsRefreshing(false)
           }
         }
 

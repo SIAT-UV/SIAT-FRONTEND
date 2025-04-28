@@ -1,5 +1,10 @@
+import { AppProviders } from "./AppProviders"
 import { AppRouter } from "./AppRouter"
 
 export const App = () => {
-  return <AppRouter />
+  return (
+    <AppProviders>
+      <AppRouter />
+    </AppProviders>
+  )
 }

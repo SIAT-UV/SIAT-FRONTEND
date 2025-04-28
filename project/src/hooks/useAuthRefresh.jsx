@@ -1,14 +1,11 @@
 import { useEffect, useState } from "react"
-import { createContext } from "react"
+import { STATUS } from "../constants"
+import { useTokenService } from "./useTokenService"
 import { refresh, tokenService } from "../services"
-import { Loader } from "../components/Loader"
-import { useTokenService } from "../hooks/useTokenService"
 
-export const userAuthContext = createContext()
-
-export function UserAuthContextProvider({ children }) {
+export const useAuthRefresh = () => {
   const { isAuthenticated } = useTokenService()
-  const [isRefreshing, setIsRefreshing] = useState(true)
+  const [status, setStatus] = useState(STATUS.loading)
   const [user, setUser] = useState(null)
 
   const login = (user) => {
@@ -17,12 +14,14 @@ export function UserAuthContextProvider({ children }) {
     setUser(user.username)
     tokenService.setToken(user.access)
     tokenService.setIsAuthenticated(true)
+    setStatus(STATUS.authenticated)
   }
 
   const logout = () => {
     setUser(null)
     tokenService.setToken(null)
     tokenService.setIsAuthenticated(false)
+    setStatus(STATUS.unauthenticated)
   }
 
   useEffect(() => {
@@ -37,9 +36,6 @@ export function UserAuthContextProvider({ children }) {
 
         logout()
       })
-      .finally(() => {
-        setIsRefreshing(false)
-      })
 
     return () => {
       controller.abort()
@@ -52,9 +48,5 @@ export function UserAuthContextProvider({ children }) {
     logout()
   }, [isAuthenticated, user])
 
-  if (isRefreshing) {
-    return <Loader />
-  }
-
-  return <userAuthContext.Provider value={{ user, login, logout }}>{children}</userAuthContext.Provider>
+  return { user, status, login, logout }
 }
