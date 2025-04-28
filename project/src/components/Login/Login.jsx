@@ -7,14 +7,13 @@ import { titulo, subtitulo } from "./Login.module.css"
 import { useAuthContext, useFetchData, useFromLocation } from "../../hooks"
 import { login } from "../../services"
 import { Loader } from "../Loader"
-import { userAuthContext } from "../../context"
 import { schemaLogin } from "../../schemas"
 import { Link, useNavigate } from "react-router-dom"
 
 export const Login = () => {
   const navigate = useNavigate()
   const from = useFromLocation()
-  const { login: loginUser } = useAuthContext(userAuthContext)
+  const { login: loginUser } = useAuthContext()
   const { loading, fetch } = useFetchData(login)
 
   const {
