@@ -1,15 +1,19 @@
-import { useSyncExternalStore } from "react"
-
-const subscribe = (observer) => {
-  window.addEventListener("resize", observer)
-
-  return () => {
-    window.removeEventListener("resize", observer)
-  }
-}
-
-const getSnapshot = () => window.innerWidth < 968
+import { useEffect, useState } from "react"
 
 export const useMobile = () => {
-  return useSyncExternalStore(subscribe, getSnapshot)
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 960)
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 960)
+    }
+
+    window.addEventListener("resize", handleResize)
+
+    return () => {
+      window.removeEventListener("resize", handleResize)
+    }
+  }, [])
+
+  return { isMobile }
 }

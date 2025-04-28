@@ -5,7 +5,7 @@ import { buttonsItem, buttonLink, loginButton, registerButton } from "./ButtonCo
 
 export const ButtonContainer = () => {
   const { user } = useAuthContext()
-  const isMobile = useMobile()
+  const { isMobile } = useMobile()
 
   if (user) return null
 
