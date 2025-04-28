@@ -4,7 +4,7 @@ import { Button } from "../Buttons"
 import { CamposRegister } from "../CamposRegister/CamposRegister"
 import { FormLayout } from "../FormLayout/FormLayout"
 import { titulo, subtitulo } from "./Login.module.css"
-import { useAuthContext, useFetchData } from "../../hooks"
+import { useAuthContext, useFetchData, useFromLocation } from "../../hooks"
 import { login } from "../../services"
 import { Loader } from "../Loader"
 import { userAuthContext } from "../../context"
@@ -13,6 +13,7 @@ import { Link, useNavigate } from "react-router-dom"
 
 export const Login = () => {
   const navigate = useNavigate()
+  const from = useFromLocation()
   const { login: loginUser } = useAuthContext(userAuthContext)
   const { loading, fetch } = useFetchData(login)
 
@@ -28,7 +29,7 @@ export const Login = () => {
     const { promise } = fetch(user)
     promise.then((response) => {
       loginUser(response)
-      navigate("/dashboard")
+      navigate(from, { replace: true })
     })
   }
 

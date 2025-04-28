@@ -1,8 +1,12 @@
-import { Navigate, Outlet } from "react-router-dom"
+import { Navigate, Outlet, useLocation } from "react-router-dom"
 import { useAuthContext } from "../hooks"
+import { STATUS } from "../constants"
 
 export const PrivateGuard = () => {
-  const { user } = useAuthContext()
+  const location = useLocation()
+  const { status } = useAuthContext()
 
-  return user ? <Outlet /> : <Navigate to="/login" replace />
+  if (status === STATUS.loading) return null
+
+  return status === STATUS.authenticated ? <Outlet /> : <Navigate to="/login" state={{ from: location }} replace />
 }
