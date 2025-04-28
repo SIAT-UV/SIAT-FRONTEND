@@ -1,2 +1,3 @@
-export * from "./ModalContext"
-export * from "./AuthContext"
+export * from "./ModalContext/ModalContext"
+export * from "./AuthContext/AuthContext"
+export * from "./AuthContext/AuthContextProvider"
