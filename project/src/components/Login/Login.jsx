@@ -12,7 +12,7 @@ import { Link, useNavigate } from "react-router-dom"
 
 export const Login = () => {
   const navigate = useNavigate()
-  const from = useFromLocation()
+  const { from } = useFromLocation()
   const { login: loginUser } = useAuthContext()
   const { loading, fetch } = useFetchData(login)
 
@@ -39,8 +39,19 @@ export const Login = () => {
       <h1 className={titulo}>Iniciar Sesión</h1>
       <h2 className={subtitulo}>Ingresa tus datos para iniciar sesión</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <CamposRegister register={register} name="identificacion" errors={errors.identificacion} label="Identificación" />
-        <CamposRegister register={register} type="password" name="contraseña" errors={errors.contraseña} label="Contraseña" />
+        <CamposRegister
+          register={register}
+          name="identificacion"
+          errors={errors.identificacion}
+          label="Identificación"
+        />
+        <CamposRegister
+          register={register}
+          type="password"
+          name="contraseña"
+          errors={errors.contraseña}
+          label="Contraseña"
+        />
         <p>
           No tienes una cuenta?
           <span> </span>
