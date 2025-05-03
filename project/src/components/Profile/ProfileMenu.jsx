@@ -6,7 +6,7 @@ export const ProfileMenu = ({ items, children }) => {
     <ul className={profileMenu}>
       {items.map((item, index) => (
         <li key={index} className={profileItem}>
-          <Link to="/perfil" className={profileLink}>
+          <Link to="/userprofile" className={profileLink}>
             {item}
           </Link>
         </li>
