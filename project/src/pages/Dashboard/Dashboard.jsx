@@ -2,16 +2,21 @@ import React, { useState } from "react"
 import "./Dashboard.css"
 import { Button } from "../../components/Buttons"
 import { RecentAccidents } from "../../components/RecentAccidents/RecentAccidents"
-import { MonthlyAccidents } from "../../components/MonthlyAccidents/MonthlyAccidents" // importa el componente
+import { MonthlyAccidents } from "../../components/MonthlyAccidents/MonthlyAccidents" 
+import { CriticalAccidents } from "../../components/CriticalAccidents/CriticalAccidents" 
 
 export const Dashboard = () => {
   const [showMonthlyAccidents, setShowMonthlyAccidents] = useState(false)
+  const [showAccidentCritical, setShowCritical] = useState(false)
 
   const handleCardClick = (title) => {
     if (title === "Total de Accidentes") {
       setShowMonthlyAccidents(true)
+      
     }
-    // Puedes manejar los otros botones aquí también si lo deseas
+    if (title === "Casos Críticos") {
+      setShowCritical(true)
+    }
   }
 
   const cards = [
@@ -34,6 +39,9 @@ export const Dashboard = () => {
 
       {/* Mostrar MonthlyAccidents solo si se activó */}
       {showMonthlyAccidents && <MonthlyAccidents onClose={() => setShowMonthlyAccidents(false)} />}
+
+      {showAccidentCritical && <CriticalAccidents onClose={() => setShowCritical(false)} />
+    }
 
       <RecentAccidents />
 
