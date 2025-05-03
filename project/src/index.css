@@ -28,7 +28,8 @@
 
 @font-face {
   font-family: "Merriweather";
-  src: url(./assets/fonts/Merry/Merriweather_48pt-Regular.ttf) format("truetype");
+  src: url(./assets/fonts/Merry/Merriweather_48pt-Regular.ttf)
+    format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -42,7 +43,8 @@
 
 @font-face {
   font-family: "Merriweather";
-  src: url("./assets/fonts/Merry/Merriweather_48pt-Light.ttf") format("truetype");
+  src: url("./assets/fonts/Merry/Merriweather_48pt-Light.ttf")
+    format("truetype");
   font-weight: lighter;
   font-style: normal;
 }
@@ -57,7 +59,7 @@ body {
   margin: 0;
   background-color: var(--bg-main-color);
   font-family: var(--font-primary);
-  overflow-x: clip;
+  overflow-x: hidden;
 }
 
 main {

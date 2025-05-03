@@ -3,4 +3,5 @@ export const PATHS = {
   dashboard: "Panel de Control",
   "registrar-accidente": "Registrar Accidente",
   "informacion-vial": "Información Vial",
+  reportes: "Reportes",
 }
