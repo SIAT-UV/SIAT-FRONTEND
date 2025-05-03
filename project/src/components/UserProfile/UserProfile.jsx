@@ -59,19 +59,24 @@ export const UserProfile = () => {
       </div>
 
       <div className="user-info">
-        <p><strong>Identificación:</strong> {userData.identificacion}</p>
         <p><strong>Nombre:</strong> {userData.nombre}</p>
         <p><strong>Apellido:</strong> {userData.apellido}</p>
+        <p><strong>Identificación:</strong> {userData.identificacion}</p>
         <p><strong>Correo:</strong> {userData.correo}</p>
+        
       </div>
+      <div className="botones-perfil">
+        <Button  className="mis-registros" type="submit">Ver Mis Registros</Button>
 
-      <Button handleClick={() => setShowPasswordForm(!showPasswordForm)} className="cambiar-password">
-        {showPasswordForm ? "Cancelar" : "Cambiar Contraseña"}
-      </Button>
+        <Button handleClick={() => setShowPasswordForm(!showPasswordForm)} className="cambiar-password">
+          {showPasswordForm ? "Cancelar" : "Cambiar Contraseña"}
+        </Button>
+      </div>
 
       {showPasswordForm && (
         <form onSubmit={handleSubmit(onPasswordChange)} className="password-form">
           <h3>Cambiar Contraseña</h3>
+  
 
           <input
             type="password"
@@ -91,6 +96,7 @@ export const UserProfile = () => {
           {errors.confirmPassword && <span>{errors.confirmPassword.message}</span>}
 
           <Button  className="actualizar" type="submit">Actualizar Contraseña</Button>
+
         </form>
       )}
     </div>
