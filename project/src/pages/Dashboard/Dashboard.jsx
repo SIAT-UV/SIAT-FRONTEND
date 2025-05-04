@@ -5,10 +5,12 @@ import { Button } from "../../components/Buttons"
 import { RecentAccidents } from "../../components/RecentAccidents/RecentAccidents"
 import { MonthlyAccidents } from "../../components/MonthlyAccidents/MonthlyAccidents" 
 import { CriticalAccidents } from "../../components/CriticalAccidents/CriticalAccidents" 
+import { Estadisticas } from "../../components/Estadisticas/Estadisticas"
 
 export const Dashboard = () => {
   const [showMonthlyAccidents, setShowMonthlyAccidents] = useState(false)
   const [showAccidentCritical, setShowCritical] = useState(false)
+  const [showEstadisticas, setShowEstadisticas] = useState(false)
 
   const handleCardClick = (title) => {
     if (title === "Total de Accidentes") {
@@ -22,6 +24,11 @@ export const Dashboard = () => {
     if (title === "Área de Alto Riesgo") {
       navigate("/mapa")
     }
+  }
+
+  const handleEstadisticasClick = () => {
+    setShowEstadisticas(true)
+    
   }
 
   const navigate = useNavigate()
@@ -55,13 +62,17 @@ export const Dashboard = () => {
 
       {showAccidentCritical && <CriticalAccidents onClose={() => setShowCritical(false)} />}
 
+      
+
       <RecentAccidents />
 
       <div className="quick-actions">
         <h3>Acciones Rápidas</h3>
         <div className="action-buttons">
           <Button handleClick={reportarAccidente} > Reportar accidente</Button>
-          <Button>Ver estadísticas</Button>
+          <Button handleClick={() => handleEstadisticasClick()} >Ver estadísticas</Button>
+        {showEstadisticas && <Estadisticas onClose={() => setShowEstadisticas(false)} />}
+          
         </div>
       </div>
     </div>
