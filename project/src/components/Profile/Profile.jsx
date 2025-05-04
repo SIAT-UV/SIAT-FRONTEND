@@ -3,18 +3,19 @@ import { Popup } from "../Popup"
 import { ProfileHeader } from "./ProfileHeader"
 import { ProfileMenu } from "./ProfileMenu"
 
+const items = [
+  {
+    text: "Perfil",
+    to: "/private/perfil",
+  },
+  {
+    text: "Reportes",
+    to: "/private/reportes",
+  },
+]
+
 export const Profile = () => {
   const { user, logout } = useAuthContext()
-  const items = [
-    {
-      text: "Perfil",
-      to: "/private/perfil",
-    },
-    {
-      text: "Reportes",
-      to: "/private/reportes",
-    },
-  ]
 
   if (!user) return null
 
