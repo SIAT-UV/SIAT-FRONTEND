@@ -1,0 +1,9 @@
+.heatMapContainer {
+  margin-top: 50px;
+}
+
+.heatMap {
+  width: 90%;
+  height: 700px;
+  margin-inline: auto;
+}

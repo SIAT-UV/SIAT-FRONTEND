@@ -1,6 +1,11 @@
-import { useApiIsLoaded, useMap, useMapsLibrary } from "@vis.gl/react-google-maps"
+import {
+  useApiIsLoaded,
+  useMap,
+  useMapsLibrary,
+} from "@vis.gl/react-google-maps"
 import { useEffect } from "react"
 import { useRef } from "react"
+import { MAP_IDS } from "../constants"
 
 const options = {
   componentRestrictions: { country: "co" },
@@ -8,7 +13,7 @@ const options = {
 
 export const useAddressMarker = (onPlaceSelect, setValue, markerPosition) => {
   const inputRef = useRef(null)
-  const map = useMap()
+  const map = useMap(MAP_IDS.ADDRESS)
   const apiIsLoaded = useApiIsLoaded()
   const places = useMapsLibrary("places")
 
@@ -27,11 +32,16 @@ export const useAddressMarker = (onPlaceSelect, setValue, markerPosition) => {
       const place = autocomplete.getPlace()
 
       if (place?.formatted_address) {
-        setValue("accidentAddress", place.formatted_address, { shouldValidate: true })
+        setValue("accidentAddress", place.formatted_address, {
+          shouldValidate: true,
+        })
       }
 
       if (place?.geometry?.location) {
-        const selectedLocation = { lat: place.geometry.location.lat(), lng: place.geometry.location.lng() }
+        const selectedLocation = {
+          lat: place.geometry.location.lat(),
+          lng: place.geometry.location.lng(),
+        }
         onPlaceSelect(selectedLocation)
       }
     })
@@ -49,7 +59,9 @@ export const useAddressMarker = (onPlaceSelect, setValue, markerPosition) => {
       const { lat, lng } = markerPosition
       // console.log(`POINT (${lng} ${lat})`)
 
-      setValue("accidentAddress", results[0].formatted_address, { shouldValidate: true })
+      setValue("accidentAddress", results[0].formatted_address, {
+        shouldValidate: true,
+      })
       setValue("accidentGeo", `POINT (${lng} ${lat})`)
     })
   }, [markerPosition, apiIsLoaded, inputRef, setValue])
