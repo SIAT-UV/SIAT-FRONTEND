@@ -18,9 +18,9 @@ export const UserReport = ({ report }) => {
 
   const filteredReport = { ...report }
   delete filteredReport[REPORT_FIELDS.REPORT_ID]
-  filteredReport[REPORT_FIELDS.CONFIRMED] = String(
-    report[REPORT_FIELDS.CONFIRMED],
-  )
+  filteredReport[REPORT_FIELDS.CONFIRMED] = report[REPORT_FIELDS.CONFIRMED]
+    ? "Sí"
+    : "No"
 
   const titles = Object.keys(filteredReport).map((key) =>
     capitalizeLastWord(key),
