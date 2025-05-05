@@ -1,7 +1,7 @@
 import { loadAbort } from "../utilities"
 import { axiosService } from "./axios.service"
 
-export const userAccidents = () => {
+export const getUserAccidents = () => {
   const controller = loadAbort()
   const axios = axiosService.getAxios()
 
