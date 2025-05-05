@@ -34,11 +34,7 @@ class AxiosInterceptors {
       async (error) => {
         const originalRequest = error.config
 
-        if (
-          originalRequest.url !== "/login/" &&
-          error.response?.status === 401 &&
-          !originalRequest._retry
-        ) {
+        if (error.response?.status === 401 && !originalRequest._retry) {
           originalRequest._retry = true
 
           try {
