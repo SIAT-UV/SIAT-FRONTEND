@@ -1,17 +1,42 @@
 import React, { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import "./Dashboard.css"
 import { Button } from "../../components/Buttons"
 import { RecentAccidents } from "../../components/RecentAccidents/RecentAccidents"
-import { MonthlyAccidents } from "../../components/MonthlyAccidents/MonthlyAccidents" // importa el componente
+import { MonthlyAccidents } from "../../components/MonthlyAccidents/MonthlyAccidents" 
+import { CriticalAccidents } from "../../components/CriticalAccidents/CriticalAccidents" 
+import { Estadisticas } from "../../components/Estadisticas/Estadisticas"
 
 export const Dashboard = () => {
   const [showMonthlyAccidents, setShowMonthlyAccidents] = useState(false)
+  const [showAccidentCritical, setShowCritical] = useState(false)
+  const [showEstadisticas, setShowEstadisticas] = useState(false)
 
   const handleCardClick = (title) => {
     if (title === "Total de Accidentes") {
       setShowMonthlyAccidents(true)
+      setShowCritical(false)
     }
-    // Puedes manejar los otros botones aquí también si lo deseas
+    if (title === "Casos Críticos") {
+      setShowCritical(true)
+      setShowMonthlyAccidents(false)
+    }
+    if (title === "Área de Alto Riesgo") {
+      navigate("/mapa")
+    }
+  }
+
+  const handleEstadisticasClick = () => {
+    setShowEstadisticas(true)
+    
+  }
+
+  const navigate = useNavigate()
+  const reportarAccidente = () => {
+    navigate("/registrar-accidente")
+  }
+  const verMapa = () => {
+    navigate("/mapa")
   }
 
   const cards = [
@@ -35,13 +60,19 @@ export const Dashboard = () => {
       {/* Mostrar MonthlyAccidents solo si se activó */}
       {showMonthlyAccidents && <MonthlyAccidents onClose={() => setShowMonthlyAccidents(false)} />}
 
+      {showAccidentCritical && <CriticalAccidents onClose={() => setShowCritical(false)} />}
+
+      
+
       <RecentAccidents />
 
       <div className="quick-actions">
         <h3>Acciones Rápidas</h3>
         <div className="action-buttons">
-          <Button>Reportar accidente</Button>
-          <Button>Ver estadísticas</Button>
+          <Button handleClick={reportarAccidente} > Reportar accidente</Button>
+          <Button handleClick={() => handleEstadisticasClick()} >Ver estadísticas</Button>
+        {showEstadisticas && <Estadisticas onClose={() => setShowEstadisticas(false)} />}
+          
         </div>
       </div>
     </div>

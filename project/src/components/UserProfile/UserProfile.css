@@ -1,0 +1,81 @@
+.profile-container {
+    max-width: 500px;
+    margin: auto;
+    background-color: rgb(242, 243, 252);
+    width: 30%;
+    border-radius: 15px;
+    padding: 24px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    max-height: 80vh;
+    overflow-y: auto;
+    margin: 0 auto;
+    
+  }
+
+    .profile-container h2 {
+        font-family:var(--font-secondary);
+
+    }
+  
+    .profile-picture-section {
+        margin-top: 30px;
+  }
+  
+  .profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+  
+  .user-info {
+    margin-top: 50px;
+    margin-bottom: 20px;
+  }
+
+  .user-info p {
+    margin: 11px 0;
+    font-family: var(--font-primary);
+
+  }
+
+  .user-info strong {
+    font-weight: bold;
+    font-family: var(--font-secondary);
+  }
+  
+  .password-form input {
+    display: block;
+    margin: 10px 0;
+    padding: 8px;
+    width: 100%;
+  }
+  
+  .password-form span {
+    color: red;
+    font-size: 0.9em;
+  }
+  
+  .password-form {
+    margin-top: 20px;
+  }
+
+  .profile-container h3 {
+     font-family: var(--font-secondary);
+  }
+
+  .actualizar {
+    margin-top: 30px;
+    
+  }
+
+  .botones-perfil {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* espacio vertical entre botones */
+    margin-top: 20px;
+    margin: 10px auto;
+    width: 50%;
+  }
+  

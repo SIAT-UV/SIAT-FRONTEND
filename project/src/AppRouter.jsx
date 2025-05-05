@@ -9,13 +9,14 @@ import { Formulario } from "./components/Register"
 import { PrivateRouter } from "./PrivateRouter"
 import { PrivateGuard } from "./guard/PrivateGuard"
 import { RoutesNotFound } from "./components/RoutesNotFound"
+import { HeatMap } from "./pages/HeatMap"
 
 export const AppRouter = () => {
   return (
     <RoutesNotFound>
       <Route element={<MainLayout />}>
         <Route index element={<Inicio />} />
-        <Route path="/mapa" element={<h2>Mapa</h2>} />
+        <Route path="/mapa" element={<HeatMap />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/informacion-vial" element={<RoadInformation />} />
         <Route element={<PrivateGuard />}>

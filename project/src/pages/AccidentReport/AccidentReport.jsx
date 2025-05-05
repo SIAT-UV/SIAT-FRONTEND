@@ -45,7 +45,10 @@ export const AccidentReport = () => {
     })
 
     const { promise } = fetch(formatedData)
-    promise.then((_) => snackbarManager.success("Se registro correctamente el accidente"))
+    promise.then((response) => {
+      console.log(response)
+      snackbarManager.success("Se registro correctamente el accidente")
+    })
     reset()
   })
 

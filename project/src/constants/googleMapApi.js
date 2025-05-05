@@ -4,3 +4,8 @@ export const DEFAULT_CENTER = {
   lat: 4.089954508094611,
   lng: -76.19161172020155,
 }
+export const MAP_IDS = {
+  ADDRESS: "address",
+  HEAT_MAP: "heatMap",
+}
+export const libraries = ["places", "visualization"]

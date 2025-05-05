@@ -1,10 +1,8 @@
-import { AdvancedMarker, APIProvider, Map, useMap } from "@vis.gl/react-google-maps"
-import { DEFAULT_CENTER, GOOGLE_MAPS_API_KEY, MAP_ID } from "../../constants"
+import { AdvancedMarker, Map } from "@vis.gl/react-google-maps"
+import { DEFAULT_CENTER, MAP_ID, MAP_IDS } from "../../constants"
 import { UbicationInput } from "./UbicationInput"
 import { useState } from "react"
 import { useCallback } from "react"
-
-const librearies = ["places"]
 
 export const UbicationMap = ({ containerStyles, zoom, children }) => {
   const [markerPosition, setMarkerPosition] = useState(null)
@@ -22,13 +20,28 @@ export const UbicationMap = ({ containerStyles, zoom, children }) => {
   }, [])
 
   return (
-    <APIProvider apiKey={GOOGLE_MAPS_API_KEY} libraries={librearies}>
-      <UbicationInput onPlaceSelect={handlePlaceSelect} markerPosition={markerPosition}>
+    <>
+      <UbicationInput
+        onPlaceSelect={handlePlaceSelect}
+        markerPosition={markerPosition}
+      >
         {children}
       </UbicationInput>
-      <Map mapId={MAP_ID} defaultCenter={DEFAULT_CENTER} style={containerStyles} defaultZoom={zoom} onClick={handleClick}>
-        <AdvancedMarker position={markerPosition} clickable onDragEnd={handleMarkerDragEnd} />
+      <Map
+        id={MAP_IDS.ADDRESS}
+        mapId={MAP_ID}
+        defaultCenter={DEFAULT_CENTER}
+        style={containerStyles}
+        defaultZoom={zoom}
+        onClick={handleClick}
+        reuseMaps
+      >
+        <AdvancedMarker
+          position={markerPosition}
+          clickable
+          onDragEnd={handleMarkerDragEnd}
+        />
       </Map>
-    </APIProvider>
+    </>
   )
 }
