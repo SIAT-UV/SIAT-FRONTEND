@@ -52,7 +52,7 @@ export const Estadisticas = ({onClose}) => {
   return (
     <div className="chart-container">
       <div className="chart-header">
-        <h3>Accidentes en el año -  {anioSeleccionado}</h3>
+        <h3>Accidentes en el año. -  {anioSeleccionado}</h3>
         <select value={anioSeleccionado} onChange={handleChange}>
           <option value="2023">2023</option>
           <option value="2024">2024</option>
