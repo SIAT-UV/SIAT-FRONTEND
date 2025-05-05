@@ -8,31 +8,23 @@ import { DEFAULT_CENTER, MAP_IDS } from "../../../constants"
 import { heatMapContainer, heatMap } from "./HeatMapContainer.module.css"
 import { useEffect } from "react"
 
-export const HeatMapContainer = ({ zoom }) => {
+export const HeatMapContainer = ({ zoom, data }) => {
   const map = useMap(MAP_IDS.HEAT_MAP)
   const visualization = useMapsLibrary("visualization")
   const apiIsLoaded = useApiIsLoaded()
 
   useEffect(() => {
-    if (!apiIsLoaded || !map || !visualization || !window) return
+    if (!apiIsLoaded || !map || !visualization || !data || !window) return
 
     const heatmap = new visualization.HeatmapLayer({
-      data: [
-        {
-          location: new window.google.maps.LatLng(
-            4.089954508094611,
-            -76.19161172020155,
-          ),
-          weight: 3,
-        },
-      ],
+      data,
       map,
     })
 
     return () => {
       heatmap.setMap(null)
     }
-  }, [apiIsLoaded, visualization, map])
+  }, [apiIsLoaded, visualization, map, data])
 
   return (
     <div className={heatMapContainer}>
