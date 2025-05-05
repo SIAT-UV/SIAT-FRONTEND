@@ -29,7 +29,10 @@ export const useAuthRefresh = () => {
 
     call
       .then((response) => {
-        login({ username: response.data.username, access: response.data.access })
+        login({
+          username: response.data.username,
+          access: response.data.access,
+        })
       })
       .catch((error) => {
         if (error.code === "ERR_CANCELED") return
