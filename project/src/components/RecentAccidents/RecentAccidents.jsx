@@ -44,12 +44,14 @@ export const RecentAccidents = () => {
       {accidents.length > 0 ? (
         accidents.map((acc, i) => (
           <div className="accident-row" key={i}>
-            <span>{acc.FECHA && acc.HORA ? new Date(`${acc.FECHA}T${acc.HORA}`).toLocaleDateString("es-CO") : "Fecha no disponible"}</span>
-            <span>
-              {acc.FECHA && acc.HORA
-                ? new Date(`${acc.FECHA}T${acc.HORA}`).toLocaleTimeString("es-CO", { hour: "2-digit", minute: "2-digit" })
-                : "Hora no disponible"}
-            </span>
+              <span>
+                {acc.fecha_hora
+                  ? new Date(acc.fecha_hora).toLocaleDateString("es-CO"): "Fecha no disponible"}
+              </span>
+              <span>
+                {acc.fecha_hora
+                  ? new Date(acc.fecha_hora).toLocaleTimeString("es-CO", { hour: "2-digit", minute: "2-digit" }): "Hora no disponible"}
+              </span>
             <span>{acc.BARRIO_HECHO}</span>
             <span>{acc.CLASE_DE_ACCIDENTE}</span>
             <span>{acc.CLASE_DE_SERVICIO}</span>
