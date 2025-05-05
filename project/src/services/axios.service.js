@@ -34,7 +34,7 @@ class AxiosInterceptors {
       async (error) => {
         const originalRequest = error.config
 
-        if (error.response?.status === 401 && !originalRequest._retry) {
+        if (error.response?.status === 403 && !originalRequest._retry) {
           originalRequest._retry = true
 
           try {
@@ -48,14 +48,20 @@ class AxiosInterceptors {
 
             tokenService.setIsAuthenticated(false)
 
-            if (errorRefresh.response.data?.CODE_ERR) snackbarManager.error(getValidateErrors(errorRefresh.response.data.CODE_ERR))
+            if (errorRefresh.response.data?.CODE_ERR)
+              snackbarManager.error(
+                getValidateErrors(errorRefresh.response.data.CODE_ERR),
+              )
 
             return Promise.reject(errorRefresh)
           }
         }
 
         if (error.code !== "ERR_CANCELED") console.log(error)
-        if (error.response?.data?.CODE_ERR) snackbarManager.error(getValidateErrors(error.response?.data?.CODE_ERR))
+        if (error.response?.data?.CODE_ERR)
+          snackbarManager.error(
+            getValidateErrors(error.response?.data?.CODE_ERR),
+          )
 
         return Promise.reject(error)
       },

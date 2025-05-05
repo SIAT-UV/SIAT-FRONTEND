@@ -10,15 +10,21 @@ import {
 } from "./UserReport.module.css"
 import { useRef } from "react"
 import { useState } from "react"
+import { capitalizeLastWord, REPORT_FIELDS } from "../../constants"
 
 export const UserReport = ({ report }) => {
   const scrollRef = useRef(null)
   const [showMessage, setShowMessage] = useState(false)
 
   const filteredReport = { ...report }
-  delete filteredReport.id
+  delete filteredReport[REPORT_FIELDS.REPORT_ID]
+  filteredReport[REPORT_FIELDS.CONFIRMED] = String(
+    report[REPORT_FIELDS.CONFIRMED],
+  )
 
-  const titles = Object.keys(filteredReport)
+  const titles = Object.keys(filteredReport).map((key) =>
+    capitalizeLastWord(key),
+  )
   const values = Object.values(filteredReport)
 
   useEffect(() => {
