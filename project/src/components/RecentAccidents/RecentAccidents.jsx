@@ -44,19 +44,23 @@ export const RecentAccidents = () => {
       {accidents.length > 0 ? (
         accidents.map((acc, i) => (
           <div className="accident-row" key={i}>
-              <span>
-                {acc.fecha_hora
-                  ? new Date(acc.fecha_hora).toLocaleDateString("es-CO"): "Fecha no disponible"}
-              </span>
-              <span>
-                {acc.fecha_hora
-                  ? new Date(acc.fecha_hora).toLocaleTimeString("es-CO", { hour: "2-digit", minute: "2-digit" }): "Hora no disponible"}
-              </span>
-            <span>{acc.BARRIO_HECHO}</span>
-            <span>{acc.CLASE_DE_ACCIDENTE}</span>
-            <span>{acc.CLASE_DE_SERVICIO}</span>
-            <span>{acc.GRAVEDAD_DEL_ACCIDENTE}</span>
+            <span>
+              {acc["Fecha del accidente"] && acc["Hora del accidente"]
+                ? new Date(`${acc["Fecha del accidente"]}T${acc["Hora del accidente"]}`).toLocaleDateString("es-CO"): "Fecha no disponible"}
+            </span>
+            <span>
+              {acc["Fecha del accidente"] && acc["Hora del accidente"]
+                ? new Date(`${acc["Fecha del accidente"]}T${acc["Hora del accidente"]}`).toLocaleTimeString("es-CO", {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  }): "Hora no disponible"}
+            </span>
+            <span>{acc["Barrio"]}</span>
+            <span>{acc["Clase de accidente"]}</span>
+            <span>{acc["Clase de servicio"]}</span>          
+            <span>{acc["Gravedad del accidente"]}</span>    
           </div>
+
         ))
       ) : (
         <p>No hay accidentes recientes.</p>

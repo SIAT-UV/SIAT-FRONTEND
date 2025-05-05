@@ -82,11 +82,12 @@ export const AccidentTable = ({ onClose, title, fetchFunction, filterFunction })
                 <tbody>
                   {data.resultados.map((accidente, index) => (
                     <tr key={index}>
-                      <td>{accidente.FECHA}</td>
-                      <td>{accidente.BARRIO_HECHO}</td>
-                      <td>{accidente.CLASE_DE_ACCIDENTE}</td>
-                      <td>{accidente.CLASE_DE_VEHICULO}</td>
-                      <td>{accidente.GRAVEDAD_DEL_ACCIDENTE}</td>
+                      <td>
+                        {accidente["Fecha del accidente"]}</td>
+                      <td>{accidente["Barrio"]}</td>
+                      <td>{accidente["Clase de accidente"]}</td>
+                      <td>{accidente["Clase de Vehículo"]}</td>
+                      <td>{accidente["Gravedad del accidente"]}</td>
                     </tr>
                   ))}
                 </tbody>
