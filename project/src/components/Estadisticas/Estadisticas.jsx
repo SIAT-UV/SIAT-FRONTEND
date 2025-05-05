@@ -3,61 +3,47 @@ import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
 } from "recharts"
 import "./Estadisticas.css"
+import { countByMonth } from "../../services/countByMonth"
+import { set } from "react-hook-form"
 
 export const Estadisticas = ({onClose}) => {
   const [datos, setDatos] = useState([])
   const [anioSeleccionado, setAnioSeleccionado] = useState("2025")
 
-  // Datos simulados por año
-  const datosPorAnio = {
-    "2023": [
-      { mes: "Ene", accidentes: 10 },
-      { mes: "Feb", accidentes: 8 },
-      { mes: "Mar", accidentes: 12 },
-      { mes: "Abr", accidentes: 7 },
-      { mes: "May", accidentes: 14 },
-      { mes: "Jun", accidentes: 9 },
-      { mes: "Jul", accidentes: 13 },
-      { mes: "Ago", accidentes: 11 },
-      { mes: "Sep", accidentes: 10 },
-      { mes: "Oct", accidentes: 15 },
-      { mes: "Nov", accidentes: 9 },
-      { mes: "Dic", accidentes: 12 },
-    ],
-    "2024": [
-      { mes: "Ene", accidentes: 14 },
-      { mes: "Feb", accidentes: 16 },
-      { mes: "Mar", accidentes: 13 },
-      { mes: "Abr", accidentes: 17 },
-      { mes: "May", accidentes: 19 },
-      { mes: "Jun", accidentes: 18 },
-      { mes: "Jul", accidentes: 15 },
-      { mes: "Ago", accidentes: 16 },
-      { mes: "Sep", accidentes: 20 },
-      { mes: "Oct", accidentes: 21 },
-      { mes: "Nov", accidentes: 22 },
-      { mes: "Dic", accidentes: 23 },
-    ],
-    "2025": [
-      { mes: "Ene", accidentes: 12 },
-      { mes: "Feb", accidentes: 15 },
-      { mes: "Mar", accidentes: 9 },
-      { mes: "Abr", accidentes: 14 },
-      { mes: "May", accidentes: 20 },
-      { mes: "Jun", accidentes: 18 },
-      { mes: "Jul", accidentes: 22 },
-      { mes: "Ago", accidentes: 19 },
-      { mes: "Sep", accidentes: 17 },
-      { mes: "Oct", accidentes: 23 },
-      { mes: "Nov", accidentes: 21 },
-      { mes: "Dic", accidentes: 25 },
-    ],
+  const fetchDatos = async (anio) => {
+    const meses = [
+      { clave: "01", nombre: "Enero" }, 
+      { clave: "02", nombre: "Febrero" },
+      { clave: "03", nombre: "Marzo" },
+      { clave: "04", nombre: "Abril" },
+      { clave: "05", nombre: "Mayo" },
+      { clave: "06", nombre: "Junio" },
+      { clave: "07", nombre: "Julio" },
+      { clave: "08", nombre: "Agosto" },
+      { clave: "09", nombre: "Septiembre" },
+      { clave: "10", nombre: "Octubre" },
+      { clave: "11", nombre: "Noviembre" },
+      { clave: "12", nombre: "Diciembre" }
+    ]
+
+    const promesas = meses.map(async (mes) => {
+      const fecha= `${anio}-${mes.clave}`
+      try {
+        const {call} = countByMonth(fecha)
+        const response = await call
+        return { mes: mes.nombre, accidentes: response.data.total_accidentes || 0 }
+      } catch (error) {
+        console.error(`Error al obtener datos para ${mes.nombre} ${anio}:`, error)
+        return { mes: mes.nombre, accidentes: 0 }
+      }
+    })
+
+    const resultados = await Promise.all(promesas)
+    setDatos(resultados)
   }
 
   useEffect(() => {
-    // Cargar datos simulados del año seleccionado
-    setDatos(datosPorAnio[anioSeleccionado] || [])
-  }, [anioSeleccionado])
+    fetchDatos(anioSeleccionado)} , [anioSeleccionado])
 
   const handleChange = (e) => {
     setAnioSeleccionado(e.target.value)
