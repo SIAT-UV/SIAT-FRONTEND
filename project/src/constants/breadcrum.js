@@ -4,4 +4,5 @@ export const PATHS = {
   "registrar-accidente": "Registrar Accidente",
   "informacion-vial": "Información Vial",
   reportes: "Reportes",
+  perfil: "Perfil",
 }
