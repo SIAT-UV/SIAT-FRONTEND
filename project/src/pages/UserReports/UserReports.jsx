@@ -9,7 +9,7 @@ export const UserReports = () => {
   const reports = data && data.resultado
   const accidentTotal = data && data[REPORT_FIELDS.ACCIDENT_TOTAL]
 
-  if (loading) return <Loader />
+  if (loading || !data) return <Loader />
 
   return (
     <>
