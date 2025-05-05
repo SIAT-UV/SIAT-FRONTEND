@@ -4,10 +4,10 @@ import { profileMenu, profileItem, profileLink } from "./ProfileMenu.module.css"
 export const ProfileMenu = ({ items, children }) => {
   return (
     <ul className={profileMenu}>
-      {items.map((item, index) => (
+      {items.map(({ text, to }, index) => (
         <li key={index} className={profileItem}>
-          <Link to="/userprofile" className={profileLink}>
-            {item}
+          <Link to={to} className={profileLink}>
+            {text}
           </Link>
         </li>
       ))}

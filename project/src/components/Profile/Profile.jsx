@@ -3,6 +3,17 @@ import { Popup } from "../Popup"
 import { ProfileHeader } from "./ProfileHeader"
 import { ProfileMenu } from "./ProfileMenu"
 
+const items = [
+  {
+    text: "Perfil",
+    to: "/private/perfil",
+  },
+  {
+    text: "Reportes",
+    to: "/private/reportes",
+  },
+]
+
 export const Profile = () => {
   const { user, logout } = useAuthContext()
 
@@ -12,7 +23,7 @@ export const Profile = () => {
     <Popup
       header={<ProfileHeader username={user} />}
       menu={
-        <ProfileMenu items={["Perfil", "Reportes"]}>
+        <ProfileMenu items={items}>
           <button type="button" onClick={logout}>
             Cerrar sesión
           </button>
