@@ -6,7 +6,7 @@ import { CamposRegister } from "../CamposRegister/CamposRegister"
 import { FormLayout } from "../FormLayout/FormLayout"
 import { titulo, subtitulo } from "./Formulario.module.css"
 import { useFetchData, useFromLocation } from "../../hooks"
-import { register as userRegister } from "../../services"
+import { snackbarManager, register as userRegister } from "../../services"
 import { Loader } from "../Loader"
 import { schemaRegister } from "../../schemas"
 import { Link, useNavigate } from "react-router-dom"
@@ -28,8 +28,7 @@ export const Formulario = () => {
     const newUser = structuredClone(user)
     delete newUser.confirmPassword
     const { promise } = fetch(newUser)
-    promise.then((response) => {
-      console.log(response)
+    promise.then(() => {
       navigate(from, { replace: true })
     })
   }

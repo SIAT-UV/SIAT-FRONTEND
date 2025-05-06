@@ -3,7 +3,6 @@ import { Popup } from "../Popup"
 import { ProfileHeader } from "./ProfileHeader"
 import { ProfileMenu } from "./ProfileMenu"
 import { logout as logoutUser } from "../../services"
-import { Loader } from "../Loader"
 
 const items = [
   {
@@ -17,7 +16,7 @@ const items = [
 ]
 
 export const Profile = () => {
-  const { loading, fetch } = useFetchData(logoutUser)
+  const { fetch } = useFetchData(logoutUser)
   const { user, logout } = useAuthContext()
 
   const handleLogout = () => {
@@ -32,8 +31,6 @@ export const Profile = () => {
   }
 
   if (!user) return null
-
-  if (loading) return <Loader />
 
   return (
     <Popup
