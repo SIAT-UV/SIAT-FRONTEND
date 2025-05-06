@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { STATUS } from "../constants"
 import { useTokenService } from "./useTokenService"
-import { refresh, tokenService } from "../services"
+import { refresh, snackbarManager, tokenService } from "../services"
 
 export const useAuthRefresh = () => {
   const { isAuthenticated } = useTokenService()
@@ -27,7 +27,7 @@ export const useAuthRefresh = () => {
   useEffect(() => {
     const { call, controller } = refresh()
 
-    call
+    call()
       .then((response) => {
         login({
           username: response.data.username,

@@ -9,7 +9,6 @@ export const RecentAccidents = () => {
     const { call, controller } = RequestRecentAccidents()
     call
       .then((response) => {
-        console.log("Respuesta de accidentes recientes:", response.data.results)
         setAccidents(response.data.results)
       })
       .catch((error) => {
@@ -40,27 +39,31 @@ export const RecentAccidents = () => {
   return (
     <div className="recent-accidents">
       <h3>Accidentes Recientes</h3>
-      {console.log("Estado de accidentes:", accidents)}
       {accidents.length > 0 ? (
         accidents.map((acc, i) => (
           <div className="accident-row" key={i}>
             <span>
               {acc["Fecha del accidente"] && acc["Hora del accidente"]
-                ? new Date(`${acc["Fecha del accidente"]}T${acc["Hora del accidente"]}`).toLocaleDateString("es-CO"): "Fecha no disponible"}
+                ? new Date(
+                    `${acc["Fecha del accidente"]}T${acc["Hora del accidente"]}`,
+                  ).toLocaleDateString("es-CO")
+                : "Fecha no disponible"}
             </span>
             <span>
               {acc["Fecha del accidente"] && acc["Hora del accidente"]
-                ? new Date(`${acc["Fecha del accidente"]}T${acc["Hora del accidente"]}`).toLocaleTimeString("es-CO", {
+                ? new Date(
+                    `${acc["Fecha del accidente"]}T${acc["Hora del accidente"]}`,
+                  ).toLocaleTimeString("es-CO", {
                     hour: "2-digit",
                     minute: "2-digit",
-                  }): "Hora no disponible"}
+                  })
+                : "Hora no disponible"}
             </span>
             <span>{acc["Barrio"]}</span>
             <span>{acc["Clase de accidente"]}</span>
-            <span>{acc["Clase de servicio"]}</span>          
-            <span>{acc["Gravedad del accidente"]}</span>    
+            <span>{acc["Clase de servicio"]}</span>
+            <span>{acc["Gravedad del accidente"]}</span>
           </div>
-
         ))
       ) : (
         <p>No hay accidentes recientes.</p>

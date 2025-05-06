@@ -6,5 +6,11 @@ import { axiosService } from "./axios.service"
 export const register = (data) => {
   const controller = loadAbort()
   const axios = axiosService.getAxios()
-  return { call: axios.post(`/registro/`, formatData(data, REGISTER_FIELDS), { signal: controller.signal }), controller }
+  return {
+    call: () =>
+      axios.post(`/registro/`, formatData(data, REGISTER_FIELDS), {
+        signal: controller.signal,
+      }),
+    controller,
+  }
 }

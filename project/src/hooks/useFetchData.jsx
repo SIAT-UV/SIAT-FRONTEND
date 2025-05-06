@@ -11,7 +11,7 @@ export const useFetchData = (apiCall, options = {}) => {
       const { call, controller } = apiCall(params)
 
       setLoading(true)
-      const promise = call
+      const promise = call()
         .then((response) => {
           setData(response.data)
           setError(null)

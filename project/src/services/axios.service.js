@@ -39,7 +39,7 @@ class AxiosInterceptors {
 
           try {
             const { call } = refresh()
-            const response = await call
+            const response = await call()
 
             tokenService.setToken(response.data.access)
             return this.#axios(originalRequest)
