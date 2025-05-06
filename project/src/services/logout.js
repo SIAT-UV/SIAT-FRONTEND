@@ -6,7 +6,7 @@ export const logout = () => {
   const axios = axiosService.getAxios()
 
   return {
-    call: axios.get("/logout/", { signal: controller.signal }),
+    call: () => axios.get("/logout/", { signal: controller.signal }),
     controller,
   }
 }

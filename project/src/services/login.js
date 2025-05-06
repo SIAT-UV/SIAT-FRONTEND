@@ -7,9 +7,10 @@ export const login = (data) => {
   const controller = loadAbort()
   const axios = axiosService.getAxios()
   return {
-    call: axios.post("/login/", formatData(data, LOGIN_FIELDS), {
-      signal: controller.signal,
-    }),
+    call: () =>
+      axios.post("/login/", formatData(data, LOGIN_FIELDS), {
+        signal: controller.signal,
+      }),
     controller,
   }
 }

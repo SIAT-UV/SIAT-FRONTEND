@@ -27,7 +27,7 @@ export const useAuthRefresh = () => {
   useEffect(() => {
     const { call, controller } = refresh()
 
-    call
+    call()
       .then((response) => {
         login({
           username: response.data.username,

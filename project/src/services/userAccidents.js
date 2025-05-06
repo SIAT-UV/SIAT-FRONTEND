@@ -6,9 +6,10 @@ export const getUserAccidents = () => {
   const axios = axiosService.getAxios()
 
   return {
-    call: axios.get("/accidentes/accidentByUser", {
-      signal: controller.signal,
-    }),
+    call: () =>
+      axios.get("/accidentes/accidentByUser", {
+        signal: controller.signal,
+      }),
     controller,
   }
 }
