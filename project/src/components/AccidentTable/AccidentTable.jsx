@@ -3,12 +3,13 @@ import React, { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import './AccidentTable.css'
 
-export const AccidentTable = ({ onClose, title, fetchFunction, filterFunction }) => {
+export const AccidentTable = ({ onClose, title, fetchFunction, showGravedadFilter}) => {
   const today = new Date()
   const [year, setYear] = useState(today.getFullYear())
   const [month, setMonth] = useState(today.getMonth() + 1)
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(false)
+  const [gravedadFilter, setGravedadFilter] = useState('')
 
   const formatDate = (y, m) => `${y}-${String(m).padStart(2, '0')}`
 
@@ -19,10 +20,11 @@ export const AccidentTable = ({ onClose, title, fetchFunction, filterFunction })
       const response = await call
       let results = response.data?.resultados || []
 
-      // Aplicar filtro si se proporciona
-      if (filterFunction) {
-        results = results.filter(filterFunction)
+
+      if (gravedadFilter) {
+        results = results.filter(acc => acc["Gravedad del accidente"] === gravedadFilter)
       }
+      
 
       setData({ resultados: results })
     } catch (error) {
@@ -34,7 +36,8 @@ export const AccidentTable = ({ onClose, title, fetchFunction, filterFunction })
 
   useEffect(() => {
     fetchData()
-  }, [year, month])
+  }, showGravedadFilter ? [year, month, gravedadFilter] : [year, month])
+  
 
   return (
     <AnimatePresence>
@@ -63,6 +66,18 @@ export const AccidentTable = ({ onClose, title, fetchFunction, filterFunction })
                 return <option key={y} value={y}>{y}</option>
               })}
             </select>
+            {showGravedadFilter && (
+              <select
+                value={gravedadFilter}
+                onChange={(e) => setGravedadFilter(e.target.value)}
+                className="filter-select"
+              >
+                <option value="">Todas las Gravedades</option>
+                <option value="CON HERIDOS">Heridos</option>
+                <option value="CON MUERTO">Muertos</option>
+                <option value="SOLO DAÑOS">Solo Daños</option>
+              </select>
+            )}
           </div>
 
           {loading ? (

@@ -9,7 +9,6 @@ export const MonthlyAccidents = ({ onClose }) => {
       onClose={onClose}
       title="Accidentes Mensuales"
       fetchFunction={FilterMonth}
-      // No se pasa filterFunction porque se quieren todos los accidentes del mes
     />
   )
 }
