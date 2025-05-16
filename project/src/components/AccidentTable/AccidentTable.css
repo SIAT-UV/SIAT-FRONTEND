@@ -31,18 +31,6 @@
       
     }
     
-    .accidents-table-filters {
-      display: flex;
-      gap: 16px;
-      margin-bottom: 16px;
-    }
-    
-    .filter-select {
-      padding: 8px;
-      border-radius: 4px;
-      border: 1px solid #ccc;
-    }
-    
     .loading-text,
     .no-data-text {
       font-style: italic;
@@ -83,4 +71,18 @@
       font-family: var(--font-primary);
       font-size: 18px;
       color: #999;
+    }
+
+.accident-table-filters {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    
+.filter-select {
+      padding: 0.4rem 0.8rem;
+      font-size: 14px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
     }

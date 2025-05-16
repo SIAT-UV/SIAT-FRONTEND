@@ -4,7 +4,7 @@ import "./Dashboard.css"
 import { Button } from "../../components/Buttons"
 import { RecentAccidents } from "../../components/RecentAccidents/RecentAccidents"
 import { MonthlyAccidents } from "../../components/MonthlyAccidents/MonthlyAccidents"
-import { CriticalAccidents } from "../../components/CriticalAccidents/CriticalAccidents"
+import { CriticalAccidents } from "../../components/GravityAccident/GravityAccident"
 import { Estadisticas } from "../../components/Estadisticas/Estadisticas"
 
 export const Dashboard = () => {
@@ -13,15 +13,15 @@ export const Dashboard = () => {
   const [showEstadisticas, setShowEstadisticas] = useState(false)
 
   const handleCardClick = (title) => {
-    if (title === "Total de Accidentes") {
+    if (title === "Accidentes Mensuales") {
       setShowMonthlyAccidents(true)
       setShowCritical(false)
     }
-    if (title === "Casos Críticos") {
+    if (title === "Accidentes por Gravedad") {
       setShowCritical(true)
       setShowMonthlyAccidents(false)
     }
-    if (title === "Área de Alto Riesgo") {
+    if (title === "Áreas de Alto Riesgo") {
       navigate("/mapa")
     }
   }
@@ -37,18 +37,18 @@ export const Dashboard = () => {
 
   const cards = [
     {
-      title: "Total de Accidentes",
-      value: "156 incidentes este mes",
+      title: "Accidentes Mensuales",
+      value: "Muestra de todos los accidentes registrados por mes",
       button: "Ver Detalles",
     },
     {
-      title: "Casos Críticos",
-      value: "23 casos críticos este mes",
-      button: "Ver casos",
+      title: "Accidentes por Gravedad",
+      value: "Muestra de todos los accidentes filtrados por el tipo de gravedad registrados por mes",
+      button: "Ver Detalles",
     },
     {
-      title: "Área de Alto Riesgo",
-      value: "12 zonas identificadas",
+      title: "Áreas de Alto Riesgo",
+      value: "Muestra de las áreas de alto riesgo en el mapa de calor",
       button: "Ver Mapa",
     },
   ]
