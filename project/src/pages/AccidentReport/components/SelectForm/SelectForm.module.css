@@ -1,0 +1,17 @@
+.selectInput {
+  display: block;
+  border: none;
+  background-color: #eee;
+  border-radius: 30px;
+  margin-top: 6px;
+  padding: 0.3em 0.8em;
+  padding-right: 2em;
+  appearance: none;
+  background-image: url("../../../../assets/icons/caret-down-fill.svg");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 0.9em;
+  font-family: inherit;
+  font-size: var(--font-size-medium);
+  box-shadow: 0px 0px 2px 0px var(--shadow-color);
+}
