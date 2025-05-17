@@ -1,5 +1,5 @@
 import { UbicationMap } from "../../../../components/Ubication"
-import { ErrorForm } from "../ErrorForm"
+import { ErrorForm } from "../../../../components/ErrorForm"
 import { ubicationContainer } from "./UbicationForm.module.css"
 
 const mapContainer = {

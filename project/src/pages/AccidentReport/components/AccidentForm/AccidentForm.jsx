@@ -1,8 +1,17 @@
-import { InputForm } from "../InputForm"
-import { SelectForm } from "../SelectForm"
+import { InputForm } from "../../../../components/InputForm"
+import { SelectForm } from "../../../../components/SelectForm"
 import { Button } from "../../../../components/Buttons"
 import { ACCIDENTS_ENUM } from "../../constants/accident"
-import { formGeneral, container, form, formTitle, formFile, input, select, ubicationInput } from "./AccidentForm.module.css"
+import {
+  formGeneral,
+  container,
+  form,
+  formTitle,
+  formFile,
+  input,
+  select,
+  ubicationInput,
+} from "./AccidentForm.module.css"
 import { FileInput } from "../FileForm/FileInput"
 import { UbicationForm } from "../UbicationForm"
 
@@ -12,7 +21,14 @@ export const AccidentForm = ({ control, handleSubmit, errors }) => {
       <h3 className={formTitle}>Información General</h3>
       <form onSubmit={handleSubmit} className={form}>
         <div className={formGeneral}>
-          <InputForm name="accidentDate" control={control} label="Fecha del Accidente" className={input} type="date" error={errors.accidentDate} />
+          <InputForm
+            name="accidentDate"
+            control={control}
+            label="Fecha del Accidente"
+            className={input}
+            type="date"
+            error={errors.accidentDate}
+          />
           <InputForm
             name="accidentTime"
             control={control}
@@ -81,9 +97,18 @@ export const AccidentForm = ({ control, handleSubmit, errors }) => {
         </div>
         <div className={formFile}>
           <UbicationForm error={errors.accidentAddress}>
-            <input type="text" placeholder="Ingrese la ubicación del accidente" className={`${input} ${ubicationInput}`} />
+            <input
+              type="text"
+              placeholder="Ingrese la ubicación del accidente"
+              className={`${input} ${ubicationInput}`}
+            />
           </UbicationForm>
-          <FileInput name="accidentImage" control={control} accept="image/jpeg, image/png" error={errors.accidentImage} />
+          <FileInput
+            name="accidentImage"
+            control={control}
+            accept="image/jpeg, image/png"
+            error={errors.accidentImage}
+          />
           <Button type="submit">Registrar accidente</Button>
         </div>
       </form>
