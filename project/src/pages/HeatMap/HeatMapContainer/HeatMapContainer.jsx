@@ -19,6 +19,7 @@ export const HeatMapContainer = ({ zoom, data }) => {
     const heatmap = new visualization.HeatmapLayer({
       data,
       map,
+      radius: 20,
     })
 
     return () => {
@@ -36,7 +37,6 @@ export const HeatMapContainer = ({ zoom, data }) => {
         minZoom={13}
         className={heatMap}
         clickableIcons={false}
-        disableDefaultUI
         reuseMaps
       ></Map>
     </div>
