@@ -1,0 +1,23 @@
+.popupMenu {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.popupMenu > :last-child {
+  position: static;
+  margin-top: 10px;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .popupMenu {
+    width: max-content;
+    margin: 0;
+  }
+
+  .popupMenu > :last-child {
+    position: absolute;
+    margin-top: 0;
+    width: inherit;
+  }
+}

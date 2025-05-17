@@ -3,6 +3,7 @@ import { useFetchData } from "../../hooks/"
 import { geoAccidents } from "../../services"
 import { Loader } from "../../components/Loader"
 import { useMemo } from "react"
+import { HeatMapLeyend } from "./HeatMapLeyend"
 
 export const HeatMap = () => {
   const { loading, data } = useFetchData(geoAccidents, { autoFetch: true })
@@ -23,6 +24,7 @@ export const HeatMap = () => {
       <h2 style={{ textAlign: "center" }}>
         Total de Accidentes: {accidentsCount}
       </h2>
+      <HeatMapLeyend />
       <HeatMapContainer zoom={15} data={geoAccidentsData} />
     </>
   )
