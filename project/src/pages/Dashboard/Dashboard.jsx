@@ -6,9 +6,13 @@ import { RecentAccidents } from "../../components/RecentAccidents/RecentAccident
 import { MonthlyAccidents } from "../../components/MonthlyAccidents/MonthlyAccidents"
 import { CriticalAccidents } from "../../components/GravityAccident/GravityAccident"
 import { Estadisticas } from "../../components/Estadisticas/Estadisticas"
+import { AccidentNoApproval } from "../../components/AccidentsList/AccidentNoApproval"
+
+
 
 export const Dashboard = () => {
   const [showMonthlyAccidents, setShowMonthlyAccidents] = useState(false)
+  const userToken = localStorage.getItem("token");
   const [showAccidentCritical, setShowCritical] = useState(false)
   const [showEstadisticas, setShowEstadisticas] = useState(false)
 
@@ -75,6 +79,8 @@ export const Dashboard = () => {
       {showAccidentCritical && (
         <CriticalAccidents onClose={() => setShowCritical(false)} />
       )}
+
+      < AccidentNoApproval />
 
       <RecentAccidents />
 
