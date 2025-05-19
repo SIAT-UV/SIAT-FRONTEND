@@ -1,5 +1,6 @@
 .inputStyle {
   display: block;
+  width: 100%;
   border: none;
   background-color: #eee;
   border-radius: 30px;
@@ -8,4 +9,8 @@
   font-family: inherit;
   font-size: var(--font-size-medium);
   box-shadow: 0px 0px 2px 0px var(--shadow-color);
+}
+
+.inputStyle:focus {
+  outline: 2px solid #555;
 }

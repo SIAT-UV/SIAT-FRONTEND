@@ -8,7 +8,8 @@ export const ACCIDENTS_ENUM = {
 }
 
 export const ACCIDENTS_FILTERS = {
-  filterOptions: ["Clase de Servicio", "Gravedad del Accidente"],
+  filterMap: ["Clase de Servicio", "Gravedad del Accidente"],
+  filterAccident: ["Fecha del Accidente", "Dirección del Accidente"],
   "Clase de Servicio": ACCIDENTS_ENUM.serviceType,
   "Gravedad del Accidente": ACCIDENTS_ENUM.accidentSeverity,
 }

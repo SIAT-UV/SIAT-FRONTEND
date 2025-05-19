@@ -43,7 +43,7 @@ export const HeatMapFilters = ({ submitData }) => {
             name="filter"
             control={control}
             label="Filtro"
-            options={ACCIDENTS_FILTERS.filterOptions}
+            options={ACCIDENTS_FILTERS.filterMap}
             error={errors.filter}
             className={filterSelect}
           />
