@@ -1,0 +1,48 @@
+.container {
+  width: 90%;
+  margin-top: 50px;
+  margin-inline: auto;
+}
+
+.formContainer {
+  margin-bottom: 30px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.filterSelect {
+  width: 100%;
+  font-size: calc(var(--font-size-small) + 0.1rem);
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .formContainer {
+    width: 70%;
+    margin-bottom: 0;
+  }
+
+  .form {
+    flex-direction: row;
+    gap: 50px;
+  }
+
+  .form > div {
+    flex-grow: 1;
+  }
+
+  .form > :last-child {
+    align-self: flex-start;
+    flex-grow: 0.2;
+    transform: translateY(50%);
+  }
+}

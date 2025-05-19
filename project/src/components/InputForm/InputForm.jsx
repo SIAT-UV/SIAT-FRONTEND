@@ -1,7 +1,17 @@
 import { Controller } from "react-hook-form"
 import { ErrorForm } from "../ErrorForm"
+import { inputStyle } from "./InputForm.module.css"
 
-export const InputForm = ({ name, control, label, className, type, step, placeholder, error }) => {
+export const InputForm = ({
+  name,
+  control,
+  label,
+  className,
+  type,
+  step,
+  placeholder,
+  error,
+}) => {
   const setMaxDate = (event) => {
     if (type !== "date") return
 
@@ -16,7 +26,15 @@ export const InputForm = ({ name, control, label, className, type, step, placeho
         name={name}
         control={control}
         render={({ field }) => (
-          <input id={name} type={type} placeholder={placeholder} step={step} className={className} onFocus={setMaxDate} {...field} />
+          <input
+            id={name}
+            type={type}
+            placeholder={placeholder}
+            step={step}
+            className={className ? `${inputStyle} ${className}` : inputStyle}
+            onFocus={setMaxDate}
+            {...field}
+          />
         )}
       />
       <ErrorForm error={error} />
