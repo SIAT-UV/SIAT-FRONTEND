@@ -1,0 +1,61 @@
+.accident-no-approval {
+    text-align: left;
+    margin-left: 0;         /* asegúrate de no tener auto */
+    padding-left: 2rem;     /* opcional, da algo de espacio */
+    max-width: 100%;        /* asegura que no se limite */
+    width: 100%;            /* ocupa todo el ancho posible */
+  }
+  
+  .table-container {
+    overflow-x: auto;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  
+  .accident-table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    background-color: white;
+  }
+  
+  .accident-table th,
+  .accident-table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+    white-space: nowrap;
+  }
+  
+  .accident-table th {
+    background-color: #f5f5f5;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .accident-table tr:hover {
+    background-color: #f9f9f9;
+  }
+  
+  .btn-aprobar {
+    background-color: #38a169; /* verde */
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+  }
+  
+  .btn-aprobar:hover {
+    background-color: #2f855a;
+  }
+  
+.titulo {
+    font-size: 1.2rem;
+    font-family: var(--font-secondary);
+    margin-bottom: 1rem;
+  }
