@@ -32,7 +32,7 @@ export const schema = z.object({
   accidentImage: z
     .instanceof(File)
     .refine((file) => file.size > 0, {
-      message: "El archivo no puede estar vació",
+      message: "El archivo no puede estar vacío",
     })
     .refine((file) => ["image/jpeg", "image/png"].includes(file.type), {
       message: "El archivo debe ser una imagen en formato jpeg o png",
