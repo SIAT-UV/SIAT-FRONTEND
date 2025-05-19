@@ -6,3 +6,9 @@ export const ACCIDENTS_ENUM = {
   vehicleType: ["Motocicleta", "Camión", "Taxi", "Automóvil", "Bus"],
   accidentArea: ["Urbana", "Rural"],
 }
+
+export const ACCIDENTS_FILTERS = {
+  filterOptions: ["Clase de Servicio", "Gravedad del Accidente"],
+  "Clase de Servicio": ACCIDENTS_ENUM.serviceType,
+  "Gravedad del Accidente": ACCIDENTS_ENUM.accidentSeverity,
+}

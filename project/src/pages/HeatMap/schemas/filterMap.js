@@ -1,11 +1,19 @@
 import { z } from "zod"
-import { ACCIDENTS_ENUM } from "../../AccidentReport/constants/accident"
+import { ACCIDENTS_FILTERS } from "../../../constants"
 
-export const filterSchema = z.object({
-  serviceType: z.enum(ACCIDENTS_ENUM.serviceType, {
-    errorMap: () => ({ message: "Seleccione una opción válida" }),
-  }),
-  accidentSeverity: z.enum(ACCIDENTS_ENUM.accidentSeverity, {
-    errorMap: () => ({ message: "Seleccione una opción válida" }),
-  }),
-})
+export const filterSchema = z
+  .object({
+    filter: z.enum(ACCIDENTS_FILTERS.filterOptions, {
+      message: "Seleccione un filtro",
+    }),
+    filterOption: z.string(),
+  })
+  .superRefine((data, ctx) => {
+    if (!ACCIDENTS_FILTERS[data.filter].includes(data.filterOption)) {
+      ctx.addIssue({
+        path: ["filterOption"],
+        code: z.ZodIssueCode.custom,
+        message: "Seleccione una opción del filtro",
+      })
+    }
+  })

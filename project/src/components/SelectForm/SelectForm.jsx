@@ -6,6 +6,7 @@ export const SelectForm = ({
   name,
   control,
   label,
+  defaultOption = "Seleccione una opción",
   className,
   options,
   error,
@@ -22,7 +23,7 @@ export const SelectForm = ({
             className={className ? `${selectInput} ${className}` : selectInput}
             {...field}
           >
-            <option value="">Seleccione una opción</option>
+            <option value="">{defaultOption}</option>
             {options.map((option, index) => (
               <option key={index} value={option.value}>
                 {option}

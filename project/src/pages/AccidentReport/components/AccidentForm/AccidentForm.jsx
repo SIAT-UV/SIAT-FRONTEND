@@ -1,7 +1,7 @@
 import { InputForm } from "../../../../components/InputForm"
 import { SelectForm } from "../../../../components/SelectForm"
 import { Button } from "../../../../components/Buttons"
-import { ACCIDENTS_ENUM } from "../../constants/accident"
+import { ACCIDENTS_ENUM } from "../../../../constants"
 import {
   formGeneral,
   container,

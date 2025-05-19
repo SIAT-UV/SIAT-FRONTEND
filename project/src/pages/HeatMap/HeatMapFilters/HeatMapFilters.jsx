@@ -1,7 +1,7 @@
 import { FilterForm } from "../../../components/FilterForm"
 import { SelectForm } from "../../../components/SelectForm"
 import { HeatMapLeyend } from "../HeatMapLeyend"
-import { ACCIDENTS_ENUM } from "../../AccidentReport/constants/accident"
+import { ACCIDENTS_FILTERS } from "../../../constants"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { filterSchema } from "../schemas"
@@ -16,15 +16,19 @@ export const HeatMapFilters = ({ submitData }) => {
   const {
     control,
     handleSubmit,
+    watch,
     reset,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(filterSchema),
     defaultValues: {
-      serviceType: "",
-      accidentSeverity: "",
+      filter: "",
+      filterOption: "",
     },
   })
+
+  const selectedFilter = watch("filter")
+  const filterOption = ACCIDENTS_FILTERS[selectedFilter] ?? []
 
   const onSubmit = handleSubmit((data) => {
     console.log(data)
@@ -36,19 +40,24 @@ export const HeatMapFilters = ({ submitData }) => {
       <div className={formContainer}>
         <FilterForm handleSubmit={onSubmit} className={form}>
           <SelectForm
-            name="serviceType"
+            name="filter"
             control={control}
-            label="Clase de Servicio"
-            options={ACCIDENTS_ENUM.serviceType}
-            error={errors.serviceType}
+            label="Filtro"
+            options={ACCIDENTS_FILTERS.filterOptions}
+            error={errors.filter}
             className={filterSelect}
           />
           <SelectForm
-            name="accidentSeverity"
+            name="filterOption"
             control={control}
-            label="Gravedad del Accidente"
-            options={ACCIDENTS_ENUM.accidentSeverity}
-            error={errors.accidentSeverity}
+            label="Opción de Filtro"
+            defaultOption={
+              filterOption.length > 0
+                ? "Seleccione una opción"
+                : "No hay un filtro seleccionado"
+            }
+            options={filterOption}
+            error={errors.filterOption}
             className={filterSelect}
           />
         </FilterForm>
