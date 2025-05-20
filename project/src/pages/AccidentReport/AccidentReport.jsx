@@ -44,7 +44,7 @@ export const AccidentReport = () => {
       formData.append(key, data[key])
     })
 
-    const { promise } = fetch(formatedData)
+    const { promise } = fetch({ data: formatedData })
     promise.then(() => {
       snackbarManager.success("Se registro correctamente el accidente")
     })

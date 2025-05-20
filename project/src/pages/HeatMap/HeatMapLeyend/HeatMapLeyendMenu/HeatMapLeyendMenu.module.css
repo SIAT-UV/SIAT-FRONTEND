@@ -1,6 +1,6 @@
 .menuLegend {
   list-style: none;
-  font-size: var(--font-size-small);
+  font-size: calc(var(--font-size-small) + 0.1rem);
   padding: 0;
   margin: 0;
   background-color: #fff;

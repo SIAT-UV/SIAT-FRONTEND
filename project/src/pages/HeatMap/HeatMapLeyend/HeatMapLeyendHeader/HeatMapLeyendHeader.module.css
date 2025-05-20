@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: var(--font-size-small);
+  font-size: calc(var(--font-size-small) + 0.1rem);
   padding: 0.5em;
   border-radius: 3px;
   box-shadow: 0px 0px 2px 1px var(--shadow-color);
