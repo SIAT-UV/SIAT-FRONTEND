@@ -22,62 +22,65 @@ export const FilterAccidentsForm = ({ submitData }) => {
   } = useForm({
     resolver: zodResolver(filterAccidentSchema),
     defaultValues: {
-      type: "",
-      value: "",
-      startDate: "",
-      endDate: "",
+      filterDate: {
+        startDate: "",
+        endDate: "",
+      },
+      filter: {
+        type: "",
+        value: "",
+      },
     },
   })
 
   const onSubmit = handleSubmit((data) => {
-    submitData(data)
+    console.log(data)
+    // submitData(data)
     reset()
   })
 
-  const selectedFilter = watch("type")
+  const selectedFilter = watch("filter.type")
 
   return (
     <FilterForm handleSubmit={onSubmit} className={form}>
       <div className={formContainer}>
+        <InputForm
+          name="filterDate.startDate"
+          control={control}
+          type="date"
+          label="Fecha Inicial del Accidente"
+          error={errors.filterDate?.startDate}
+        />
+        <InputForm
+          name="filterDate.endDate"
+          control={control}
+          type="date"
+          label="Fecha Final del Accidente"
+          error={errors.filterDate?.endDate}
+        />
         <SelectForm
-          name="type"
+          name="filter.type"
           control={control}
           label="Filtro"
           options={ACCIDENTS_FILTERS.filterAccident}
-          error={errors.type}
+          error={errors.filter?.type}
         />
-        {selectedFilter.length === 0 ? (
-          <div className={noFilterSelected}>
-            <span>No hay filtros seleccionados</span>
-          </div>
-        ) : (
+        {selectedFilter ? (
           <FilterOption selectedFilter={selectedFilter}>
             <InputForm
-              name="startDate"
-              control={control}
-              type="date"
-              label="Fecha Inicial del Accidente"
-              error={errors.startDate}
-              filter="Fecha del Accidente"
-            />
-            <InputForm
-              name="endDate"
-              control={control}
-              type="date"
-              label="Fecha Final del Accidente"
-              error={errors.endDate}
-              filter="Fecha del Accidente"
-            />
-            <InputForm
-              name="value"
+              name="filter.value"
               control={control}
               type="text"
               label="Dirección del Accidente"
               placeholder="Ingrese la dirección del accidente"
-              error={errors.value}
+              error={errors.filter?.value}
               filter="Dirección del Accidente"
             />
           </FilterOption>
+        ) : (
+          <div className={noFilterSelected}>
+            <span>No hay filtros seleccionados</span>
+          </div>
         )}
       </div>
     </FilterForm>

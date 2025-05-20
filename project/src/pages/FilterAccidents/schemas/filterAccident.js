@@ -1,33 +1,37 @@
 import { z } from "zod"
+import { ACCIDENTS_FILTERS } from "../../../constants"
+
+const dateValidator = z
+  .string()
+  .date("Formato inválido, se requiere (YYYY-MM-DD)")
+  .refine((date) => date <= new Date().toLocaleDateString("en-ca"), {
+    message: "La fecha no debe ser mayor que la actual",
+  })
 
 const dateSchema = z.object({
-  type: z.literal("Fecha del Accidente"),
-  startDate: z
-    .string()
-    .date("Formato inválido, se requiere (YYYY-MM-DD)")
-    .refine((date) => date <= new Date().toLocaleDateString("en-ca"), {
-      message: "La fecha no debe ser mayor que la actual",
-    }),
-  endDate: z
-    .string()
-    .date("Formato inválido, se requiere (YYYY-MM-DD)")
-    .refine((date) => date <= new Date().toLocaleDateString("en-ca"), {
-      message: "La fecha no debe ser mayor que la actual",
-    }),
+  startDate: dateValidator,
+  endDate: dateValidator,
 })
 
-const addressSchema = z.object({
-  type: z.literal("Dirección del Accidente"),
-  value: z.string().min(3, "Se requiere la dirección del accidente"),
+const addressType = z.string()
+
+const filterSchema = z.object({
+  type: z.enum(["", ...ACCIDENTS_FILTERS.filterAccident], {
+    message: "Seleccione un filtro válido",
+  }),
+  value: z.union([addressType]),
 })
 
 export const filterAccidentSchema = z
-  .discriminatedUnion("type", [dateSchema, addressSchema], {
-    errorMap: () => ({
-      message: "Seleccione un filtro",
-    }),
+  .object({
+    filterDate: dateSchema,
+    filter: filterSchema,
   })
-  .refine((data) => data.startDate <= data.endDate, {
-    path: ["endDate"],
-    message: "La fecha final no puede ser menor que la fecha inicial",
+  .refine((data) => data.filterDate.startDate <= data.filterDate.endDate, {
+    path: ["filterDate", "endDate"],
+    message: "La fecha inicial no puede ser mayor que la fecha final",
+  })
+  .refine((data) => data.filter.value !== "" || data.filter.type === "", {
+    path: ["filter", "value"],
+    message: "Ingrese un valor para el filtro seleccionado",
   })
