@@ -12,8 +12,6 @@ export const FilterAccidents = () => {
 
   const reports = data && data.resultados
   const accidentTotal = data && data[REPORT_FIELDS.COUNT]
-  console.log(data)
-
   const submitData = (data) => {
     const { startDate, endDate } = data.filterDate
     setFilterDate(data.filterDate)
