@@ -12,11 +12,9 @@ export const AccidentNoApproval = () => {
     call
       .then((response) => {
         setAccidents(response.data.results)
-        console.log("primer accidente:", accidents[0])
       })
       .catch((error) => {
         if (error.name !== "CanceledError") {
-          console.error("Error al cargar accidentes por confirmar:", error)
         }
       })
 
@@ -49,7 +47,6 @@ export const AccidentNoApproval = () => {
         setAccidents((prev) => prev.filter((a) => a.id !== accidente.id))
   
         if (confirmado) {
-          console.log("Accidente confirmado por mayoría de votos.")
           setMensajeExito("Accidente aprobado con exito.")
 
           setTimeout(() => {
@@ -76,7 +73,6 @@ export const AccidentNoApproval = () => {
     <div className="accident-no-approval">
       <div className="titulo"> Accidentes por Aprobar</div>
       {mensajeExito && <div className="mensaje-exito">{mensajeExito}</div>}
-
       {accidents.length > 0 ? (
         <div className="table-container">
           <table className="accident-table">
@@ -124,6 +120,7 @@ export const AccidentNoApproval = () => {
       ) : (
         <p>No hay accidentes por confirmar.</p>
       )}
+    
     </div>
   )
 }

@@ -60,13 +60,31 @@
     margin-bottom: 1rem;
   }
 
-  .mensaje-exito {
-    background-color: #d4edda;
-    color: #155724;
-    padding: 10px 20px;
-    margin: 15px 0;
-    border: 1px solid #c3e6cb;
-    border-radius: 5px;
-    font-weight: bold;
-    text-align: center;
+  .toast-exito {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 24px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    font-size: 16px;
+    animation: fadeInOut 3s ease-in-out;
+  }
+  
+  @keyframes fadeInOut {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    10%, 90% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
   }
