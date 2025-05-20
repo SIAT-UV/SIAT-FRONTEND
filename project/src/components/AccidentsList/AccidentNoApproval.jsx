@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from "react"
-import { RequestRecentAccidents } from "../../services/RequestRecentAccidents"
+import { accidentNoApproval } from "../../services/accidentNoApproval"
+import { accidentApproval } from "../../services/accidentApproval"
 import "./AccidentNoApproval.css"
 
 export const AccidentNoApproval = () => {
   const [accidents, setAccidents] = useState([])
+  const [mensajeExito, setMensajeExito] = useState("")
 
   const fetchAccidents = () => {
-    const { call, controller } = RequestRecentAccidents()
+    const { call, controller } = accidentNoApproval()
     call
       .then((response) => {
         setAccidents(response.data.results)
+        console.log("primer accidente:", accidents[0])
       })
       .catch((error) => {
         if (error.name !== "CanceledError") {
-          console.error("Error al cargar accidentes recientes:", error)
+          console.error("Error al cargar accidentes por confirmar:", error)
         }
       })
 
@@ -36,13 +39,43 @@ export const AccidentNoApproval = () => {
   }, [])
 
   const handleAprobar = (accidente) => {
-    console.log("Aprobar accidente:", accidente)
-    // Aquí puedes agregar lógica para enviar la aprobación al servidor.
+    console.log("Aprobando accidente:", accidente)
+    const { call, controller } = accidentApproval(accidente["ID de reporte"])
+  
+    call
+      .then((response) => {
+        const { confirmado } = response.data
+  
+        setAccidents((prev) => prev.filter((a) => a.id !== accidente.id))
+  
+        if (confirmado) {
+          console.log("Accidente confirmado por mayoría de votos.")
+          setMensajeExito("Accidente aprobado con exito.")
+
+          setTimeout(() => {
+            setMensajeExito("")
+          }, 3000)
+        }
+      })
+      .catch((error) => {
+        const code = error.response?.data?.CODE_ERR
+        if (code === "ALREADY_APPROVED") {
+          alert("Ya aprobaste este accidente.")
+        } else if (code === "ACCIDENT_ALREADY_CONFIRMED") {
+          alert("Este accidente ya fue confirmado.")
+          setAccidents((prev) => prev.filter((a) => a.id !== accidente.id))
+        } else if (code === "INVALID_TOKEN") {
+          alert("Tu sesión ha expirado. Inicia sesión nuevamente.")
+        } else {
+          console.error("Error inesperado al aprobar accidente:", error)
+        }
+      })
   }
 
   return (
     <div className="accident-no-approval">
       <div className="titulo"> Accidentes por Aprobar</div>
+      {mensajeExito && <div className="mensaje-exito">{mensajeExito}</div>}
 
       {accidents.length > 0 ? (
         <div className="table-container">
@@ -77,7 +110,7 @@ export const AccidentNoApproval = () => {
                   <td>{acc["Barrio"]}</td>
                   <td>{acc["Gravedad del accidente"]}</td>
                   <td>{acc["Dirección"]}</td>
-                    <td>0</td>
+                  <td>{acc["Numero de aprobaciones"]}</td>
                   <td>
                     <button className="btn-aprobar" onClick={() => handleAprobar(acc)}>
                       Aprobar
@@ -89,7 +122,7 @@ export const AccidentNoApproval = () => {
           </table>
         </div>
       ) : (
-        <p>No hay accidentes recientes.</p>
+        <p>No hay accidentes por confirmar.</p>
       )}
     </div>
   )

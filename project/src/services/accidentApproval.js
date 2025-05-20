@@ -1,20 +1,9 @@
-import { loadAbort } from "../utilities/index.js";
-import { axiosService } from "./axios.service.js";
+import { loadAbort } from "../utilities"
+import { axiosService } from "./axios.service.js"
 
-export const accidentApproval = (accidenteId, token) => {
-  const controller = loadAbort();
-  const axios = axiosService.getAxios();
-
-  return {
-    call: axios.post(
-      `accidentes/${accidenteId}/aprobar/`, {},
-      {
-        signal: controller.signal,
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    ),
-    controller,
-  };
-};
+export const accidentApproval = (id) => {
+  const controller = loadAbort()
+  const axios = axiosService.getAxios()
+  const promise = axios.post(`accidentes/${id}/aprobar/`, {}, { signal: controller.signal })
+  return { promise, controller }
+}
