@@ -124,3 +124,4 @@ export const AccidentNoApproval = () => {
     </div>
   )
 }
+
