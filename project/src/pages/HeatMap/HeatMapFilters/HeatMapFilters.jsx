@@ -4,7 +4,7 @@ import { HeatMapLeyend } from "../HeatMapLeyend"
 import { ACCIDENTS_FILTERS } from "../../../constants"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { filterSchema } from "../schemas"
+import { filterMapSchema } from "../schemas"
 import {
   container,
   formContainer,
@@ -17,22 +17,20 @@ export const HeatMapFilters = ({ submitData }) => {
     control,
     handleSubmit,
     watch,
-    reset,
     formState: { errors },
   } = useForm({
-    resolver: zodResolver(filterSchema),
+    resolver: zodResolver(filterMapSchema),
     defaultValues: {
-      filter: "",
-      filterOption: "",
+      type: "",
+      value: "",
     },
   })
 
-  const selectedFilter = watch("filter")
+  const selectedFilter = watch("type")
   const filterOption = ACCIDENTS_FILTERS[selectedFilter] ?? []
 
   const onSubmit = handleSubmit((data) => {
-    console.log(data)
-    reset()
+    submitData(data)
   })
 
   return (
@@ -40,15 +38,15 @@ export const HeatMapFilters = ({ submitData }) => {
       <div className={formContainer}>
         <FilterForm handleSubmit={onSubmit} className={form}>
           <SelectForm
-            name="filter"
+            name="type"
             control={control}
             label="Filtro"
             options={ACCIDENTS_FILTERS.filterMap}
-            error={errors.filter}
+            error={errors.type}
             className={filterSelect}
           />
           <SelectForm
-            name="filterOption"
+            name="value"
             control={control}
             label="Opción de Filtro"
             defaultOption={
@@ -57,7 +55,7 @@ export const HeatMapFilters = ({ submitData }) => {
                 : "No hay un filtro seleccionado"
             }
             options={filterOption}
-            error={errors.filterOption}
+            error={errors.value}
             className={filterSelect}
           />
         </FilterForm>

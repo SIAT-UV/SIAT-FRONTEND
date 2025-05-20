@@ -25,7 +25,7 @@ export const Login = () => {
   })
 
   const onSubmit = (user) => {
-    const { promise } = fetch(user)
+    const { promise } = fetch({ data: user })
     promise.then((response) => {
       loginUser(response)
       navigate(from, { replace: true })

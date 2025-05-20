@@ -1,19 +1,22 @@
 import { z } from "zod"
-import { ACCIDENTS_FILTERS } from "../../../constants"
+import { ACCIDENTS_ENUM } from "../../../constants"
 
-export const filterSchema = z
-  .object({
-    filter: z.enum(ACCIDENTS_FILTERS.filterMap, {
-      message: "Seleccione un filtro",
-    }),
-    filterOption: z.string(),
-  })
-  .superRefine((data, ctx) => {
-    if (!ACCIDENTS_FILTERS[data.filter].includes(data.filterOption)) {
-      ctx.addIssue({
-        path: ["filterOption"],
-        code: z.ZodIssueCode.custom,
-        message: "Seleccione una opción del filtro",
-      })
-    }
-  })
+const gravitySchema = z.object({
+  type: z.literal("Gravedad del Accidente"),
+  value: z.enum(ACCIDENTS_ENUM.accidentSeverity, {
+    message: "Seleccione una opción válida",
+  }),
+})
+
+const vehiculeSchema = z.object({
+  type: z.literal("Clase de Vehículo"),
+  value: z.enum(ACCIDENTS_ENUM.vehicleType, {
+    message: "Seleccione una opción válida",
+  }),
+})
+
+export const filterMapSchema = z.discriminatedUnion(
+  "type",
+  [gravitySchema, vehiculeSchema],
+  { errorMap: () => ({ message: "Seleccione un filtro" }) },
+)

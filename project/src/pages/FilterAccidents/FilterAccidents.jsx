@@ -13,9 +13,8 @@ export const FilterAccidents = () => {
   const reports = data && data.resultados
   const accidentTotal = data && data[REPORT_FIELDS.COUNT]
   const submitData = (data) => {
-    const { startDate, endDate } = data.filterDate
     setFilterDate(data.filterDate)
-    fetch({ startDate, endDate })
+    fetch({ data: data.filterDate })
   }
 
   if (loading) return <Loader />

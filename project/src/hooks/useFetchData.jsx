@@ -8,7 +8,10 @@ export const useFetchData = (apiCall, options = {}) => {
 
   const fetch = useCallback(
     (params) => {
-      const { call, controller } = apiCall(params)
+      const newApiCall = params?.newApiCall
+      const { call, controller } = newApiCall
+        ? newApiCall(params?.data)
+        : apiCall(params?.data)
 
       setLoading(true)
       const promise = call()

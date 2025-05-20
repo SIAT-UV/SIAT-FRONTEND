@@ -1,4 +1,4 @@
-import { colorsLeyend } from "../../constants/colorsLeyend"
+import { colorsLeyend } from "../../constants"
 import {
   menuLegend,
   menuListLegend,

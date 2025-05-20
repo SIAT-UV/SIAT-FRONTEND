@@ -27,7 +27,7 @@ export const Formulario = () => {
   const onSubmit = (user) => {
     const newUser = structuredClone(user)
     delete newUser.confirmPassword
-    const { promise } = fetch(newUser)
+    const { promise } = fetch({ data: newUser })
     promise.then(() => {
       navigate(from, { replace: true })
     })
