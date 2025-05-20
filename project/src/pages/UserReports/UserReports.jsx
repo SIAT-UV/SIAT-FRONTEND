@@ -1,8 +1,8 @@
-import { UserReport } from "./components/UserReport"
+import { CardReport } from "../../components/CardReport"
 import { useFetchData } from "../../hooks"
 import { getUserAccidents } from "../../services"
 import { Loader } from "../../components/Loader"
-import { REPORT_FIELDS } from "./constants"
+import { REPORT_FIELDS } from "../../constants"
 
 export const UserReports = () => {
   const { loading, data } = useFetchData(getUserAccidents, { autoFetch: true })
@@ -17,7 +17,7 @@ export const UserReports = () => {
       {accidentTotal > 0 ? (
         reports.map((report) => {
           return (
-            <UserReport report={report} key={report[REPORT_FIELDS.REPORT_ID]} />
+            <CardReport report={report} key={report[REPORT_FIELDS.REPORT_ID]} />
           )
         })
       ) : (

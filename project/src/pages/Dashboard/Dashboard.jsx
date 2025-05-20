@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import "./Dashboard.css"
 import { Button } from "../../components/Buttons"
 import { RecentAccidents } from "../../components/RecentAccidents/RecentAccidents"
@@ -47,7 +47,8 @@ export const Dashboard = () => {
     },
     {
       title: "Accidentes por Gravedad",
-      value: "Muestra de todos los accidentes filtrados por el tipo de gravedad registrados por mes",
+      value:
+        "Muestra de todos los accidentes filtrados por el tipo de gravedad registrados por mes",
       button: "Ver Detalles",
     },
     {
@@ -91,6 +92,9 @@ export const Dashboard = () => {
           <Button handleClick={() => handleEstadisticasClick()}>
             Ver estadísticas
           </Button>
+          <Link to="/dashboard/filtrar-accidente">
+            <Button otherClass="action-button">Filtrar accidentes</Button>
+          </Link>
           {showEstadisticas && (
             <Estadisticas onClose={() => setShowEstadisticas(false)} />
           )}

@@ -7,12 +7,13 @@ import {
   reportBody,
   listTitles,
   listValues,
-} from "./UserReport.module.css"
+} from "./CardReport.module.css"
 import { useRef } from "react"
 import { useState } from "react"
-import { capitalizeLastWord, REPORT_FIELDS } from "../../constants"
+import { REPORT_FIELDS } from "../../constants"
+import { capitalizeLastWord } from "../../utilities"
 
-export const UserReport = ({ report }) => {
+export const CardReport = ({ report }) => {
   const scrollRef = useRef(null)
   const [showMessage, setShowMessage] = useState(false)
 

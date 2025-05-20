@@ -10,6 +10,7 @@ import { PrivateRouter } from "./PrivateRouter"
 import { PrivateGuard } from "./guard/PrivateGuard"
 import { RoutesNotFound } from "./components/RoutesNotFound"
 import { HeatMap } from "./pages/HeatMap"
+import { FilterAccidents } from "./pages/FilterAccidents"
 
 export const AppRouter = () => {
   return (
@@ -18,6 +19,10 @@ export const AppRouter = () => {
         <Route index element={<Inicio />} />
         <Route path="/mapa" element={<HeatMap />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route
+          path="/dashboard/filtrar-accidente"
+          element={<FilterAccidents />}
+        />
         <Route path="/informacion-vial" element={<RoadInformation />} />
         <Route element={<PrivateGuard />}>
           <Route path="/private/*" element={<PrivateRouter />} />

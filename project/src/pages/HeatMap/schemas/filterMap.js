@@ -3,7 +3,7 @@ import { ACCIDENTS_FILTERS } from "../../../constants"
 
 export const filterSchema = z
   .object({
-    filter: z.enum(ACCIDENTS_FILTERS.filterOptions, {
+    filter: z.enum(ACCIDENTS_FILTERS.filterMap, {
       message: "Seleccione un filtro",
     }),
     filterOption: z.string(),
