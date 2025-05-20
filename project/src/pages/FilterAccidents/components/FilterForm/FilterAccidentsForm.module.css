@@ -3,6 +3,8 @@
   flex-direction: column;
   gap: 2em;
   width: 90%;
+  margin-top: 30px;
+  margin-bottom: 60px;
   margin-inline: auto;
 }
 
@@ -13,7 +15,7 @@
 }
 
 .noFilterSelected {
-  text-align: center;
+  text-align: left;
 }
 
 @media screen and (min-width: 500px) {
@@ -37,7 +39,8 @@
   }
 
   .formContainer {
-    width: 70%;
+    width: 80%;
+    align-items: flex-end;
     flex-direction: row;
   }
 
@@ -52,7 +55,7 @@
 
   .form > :last-child {
     align-self: flex-start;
-    width: 15%;
+    width: 10%;
     margin-right: 0;
     transform: translateY(50%);
   }
