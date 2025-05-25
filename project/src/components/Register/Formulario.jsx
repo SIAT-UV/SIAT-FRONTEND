@@ -5,8 +5,8 @@ import { Button } from "../Buttons"
 import { CamposRegister } from "../CamposRegister/CamposRegister"
 import { FormLayout } from "../FormLayout/FormLayout"
 import { titulo, subtitulo } from "./Formulario.module.css"
-import { useFetchData, useFromLocation } from "../../hooks"
-import { snackbarManager, register as userRegister } from "../../services"
+import { useAuthContext, useFetchData, useFromLocation } from "../../hooks"
+import { register as userRegister } from "../../services"
 import { Loader } from "../Loader"
 import { schemaRegister } from "../../schemas"
 import { Link, useNavigate } from "react-router-dom"
@@ -15,6 +15,7 @@ export const Formulario = () => {
   const navigate = useNavigate()
   const { from } = useFromLocation()
   const { loading, fetch } = useFetchData(userRegister)
+  const { login } = useAuthContext()
 
   const {
     register,
@@ -27,8 +28,10 @@ export const Formulario = () => {
   const onSubmit = (user) => {
     const newUser = structuredClone(user)
     delete newUser.confirmPassword
+
     const { promise } = fetch({ data: newUser })
-    promise.then(() => {
+    promise.then((data) => {
+      login(data)
       navigate(from, { replace: true })
     })
   }

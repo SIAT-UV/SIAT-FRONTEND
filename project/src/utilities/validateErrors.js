@@ -5,6 +5,7 @@ export const getValidateErrors = (errorCode) => {
     REFRESH_NO_PROVIDED: "Ocurrió un error al reintentar iniciar sesión",
     AUTH_ERROR: "Ocurrió un error inesperado en la autenticación",
     INVALID_CREDENTIALS: "Las credenciales ingresadas son incorrectas",
+    INVALID_TOKEN: "Ocurrió un error al validar el acceso a esta sección",
     USER_NOT_FOUND: "El usuario no se encuentra registrado",
     SERVER_ERROR:
       "Ocurrió un error inesperado en el servidor. Intente nuevamente",
