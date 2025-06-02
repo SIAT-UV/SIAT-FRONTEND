@@ -5,11 +5,11 @@ import {
     bienvenida__info
   } from './Bienvenida.module.css'
   
-export function Bienvenida ({ children }) {
+export function Bienvenida ({ children, titulo , subtitulo}) {
     return (
       <section className={bienvenida}>
-        <h4 className={`${bienvenida__title} ${bienvenida__titleBold}`}>SIAT</h4>
-        <h5 className={bienvenida__title}>Sistema de Informacion de Accidentes de Transito</h5>
+        <h4 className={`${bienvenida__title} ${bienvenida__titleBold}`}>{titulo} </h4>
+        <h5 className={bienvenida__title}>{subtitulo} </h5>
         <p className={bienvenida__info}>{children}</p>
       </section>
     )
