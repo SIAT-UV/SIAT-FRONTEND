@@ -3,7 +3,9 @@
     margin-left: 0;         /* asegúrate de no tener auto */
     padding-left: 2rem;     /* opcional, da algo de espacio */
     max-width: 100%;        /* asegura que no se limite */
-    width: 100%;            /* ocupa todo el ancho posible */
+    width: 100%;      
+    margin-top: 3%;      /* ocupa todo el ancho posible */
+
   }
   
   .table-container {
@@ -54,10 +56,9 @@
     background-color: #2f855a;
   }
   
-.titulo {
+  .accident-no-approval h3 {
     font-size: 1.2rem;
-    font-family: var(--font-secondary);
-    margin-bottom: 1rem;
+   
   }
 
   .toast-exito {
