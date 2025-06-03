@@ -71,7 +71,7 @@ export const AccidentNoApproval = () => {
 
   return (
     <div className="accident-no-approval">
-      <div className="titulo"> Accidentes por Aprobar</div>
+      <h3>Accidentes por Aprobar</h3>
       {mensajeExito && <div className="mensaje-exito">{mensajeExito}</div>}
       {accidents.length > 0 ? (
         <div className="table-container">

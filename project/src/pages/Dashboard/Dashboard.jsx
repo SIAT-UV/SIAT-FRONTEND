@@ -81,8 +81,6 @@ export const Dashboard = () => {
         <CriticalAccidents onClose={() => setShowCritical(false)} />
       )}
 
-      < AccidentNoApproval />
-
       <RecentAccidents />
 
       <div className="quick-actions">
@@ -100,6 +98,7 @@ export const Dashboard = () => {
           )}
         </div>
       </div>
+      < AccidentNoApproval />
     </div>
   )
 }
